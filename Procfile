@@ -1,1 +1,1 @@
-web:gunicorn book_shelf.wsgi
+web: gunicorn book_shelf.wsgi
