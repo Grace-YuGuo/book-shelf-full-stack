@@ -3,5 +3,5 @@ from . import views
 
 # Set up urlpatterns for book app
 urlpatterns = [
-    path('', views.book, name='book'),
+    path('', views.HomePage.as_view(), name='book'),
 ]
