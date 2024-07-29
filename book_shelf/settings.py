@@ -19,6 +19,8 @@ if os.path.isfile('env.py'):
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+# Templates directory
+TEMPLATES_DIR = os.path.join('BASE_DIR','templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -35,7 +37,9 @@ CSRF_TRUSTED_ORIGINS = [
     "https://8000-graceyuguo-bookshelf-qiz2udug1ky.ws.codeinstitute-ide.net",
 ]
 
-# Application definition
+# Application definition 
+# Add application of book
+# Add cloudinary application 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -44,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'book',
 ]
 
@@ -59,10 +65,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'book_shelf.urls'
 
+# Update DIRS to TEMPLATES_DIR as new defined variable
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,6 +135,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+# Static file URL
+STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
