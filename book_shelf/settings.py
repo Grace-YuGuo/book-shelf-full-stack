@@ -20,8 +20,7 @@ if os.path.isfile('env.py'):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # Templates directory
-TEMPLATES_DIR = os.path.join('BASE_DIR','templates')
-
+TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -30,11 +29,12 @@ TEMPLATES_DIR = os.path.join('BASE_DIR','templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-graceyuguo-bookshelf-qiz2udug1ky.ws.codeinstitute-ide.net','.herokuapp.com']
 CSRF_TRUSTED_ORIGINS = [
-    "https://8000-graceyuguo-bookshelf-qiz2udug1ky.ws.codeinstitute-ide.net",
+    "https://*.codeinstitute-ide.net",
+    "https://*.herokuapp.com"
 ]
 
 # Application definition 
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'book',
 ]
 
+# Add whitenoise middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
