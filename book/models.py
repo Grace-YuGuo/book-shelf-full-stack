@@ -33,7 +33,7 @@ class Book(models.Model):
     class Meta:
         ordering = ['created_on']
     def __str__(self):
-        return f"{self.title} | category: {self.category} | author: {self.author}"
+        return f"The book name: {self.title} | category: {self.category} | author: {self.author}"
 
 class Review(models.Model):
     """
@@ -49,4 +49,4 @@ class Review(models.Model):
     class Meta:
         ordering = ["created_on"]
     def __str__(self):
-        return f"Comment: {self.content} by {self.user} for {self.book}"
+        return f"Review: {self.content} by {self.user} for {self.book}"
