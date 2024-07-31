@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+# Create your models here.
+
+RATINGS =  ((1, "Poor"),(2, "Fair"),(3, "Good"),(4, "Very Good"),(5,"Excellent"))
 
 class Category(models.Model):
     """
@@ -12,16 +15,14 @@ class Category(models.Model):
     def __str__(self):
         return f"{self.name}"
 
-
-# Create your models here.
 class Book(models.Model):
     """
-    Stores a single book entry related to :modle: =`auth.User` and model:`category`
+    Stores a single book entry related to :modle: =`auth.User` and model:`Category`
     """
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True,related_name='user_books')
     title = models.CharField(max_length=200,null=False,blank=False, unique=True)
     author = models.CharField(max_length=200,null=False,blank=False)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL,null=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL,null=True, related_name='category_books')
     pages = models.IntegerField()
     image = CloudinaryField('image',default ='imageplaceholder')
     description = models.TextField()
@@ -33,3 +34,19 @@ class Book(models.Model):
         ordering = ['created_on']
     def __str__(self):
         return f"{self.title} | category: {self.category} | author: {self.author}"
+
+class Review(models.Model):
+    """
+    Stores a single comment entry related to :model:=`auth.User` and model:`Book`
+    """
+    book = models.ForeignKey(Book, on_delete = models.CASCADE, related_name= "book_reviews")
+    user = models.ForeignKey(User, on_delete = models.CASCADE, related_name="book_reviewers")
+    content = models.TextField()
+    rating = models.IntegerField(choices=RATINGS,default=3)
+    created_on = models.DateTimeField(auto_now_add= True)
+    approved = models.BooleanField(default=False)
+  
+    class Meta:
+        ordering = ["created_on"]
+    def __str__(self):
+        return f"Comment: {self.content} by {self.user} for {self.book}"
