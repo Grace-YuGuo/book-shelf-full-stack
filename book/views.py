@@ -16,5 +16,5 @@ from .models import Book
 
 # Set up a generic view inherites from generic.ListView class to display all the books
 class BookList(generic.ListView):
-    queryset= Book.objects.all()
+    queryset= Book.objects.filter(user=1)
     template_name = "book_list.html"
