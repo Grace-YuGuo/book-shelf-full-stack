@@ -2,22 +2,26 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
-CATEGORY = ((0,"Literary fiction"), (1,"Science fiction"), (2,"Horror"), (3,"Romance")
-, (4,"Mystery"), (5,"Fantasy"), (6,"Poetry")
-, (7,"Drama"), (8,"Humor"), (9,"History")
-, (10,"Photography"), (11,"Biography"), (12,"Art")
-, (13,"Travel"),(14,"Other")
-)
+
+class Category(models.Model):
+    """
+    Stores a single category entry related to :model:=`Book`
+    """
+    name = models.CharField(max_length=200,null=False,blank=False)
+    
+    def __str__(self):
+        return f"{self.name}"
+
 
 # Create your models here.
 class Book(models.Model):
     """
-    Stores a single book entry related to :modle: =`auth.User`
+    Stores a single book entry related to :modle: =`auth.User` and model:`category`
     """
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=200,null=False,blank=False, unique=True)
     author = models.CharField(max_length=200,null=False,blank=False)
-    category = models.IntegerField(choices = CATEGORY, default= 0, null=False, blank=False)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL,null=True)
     pages = models.IntegerField()
     image = CloudinaryField('image',default ='imageplaceholder')
     description = models.TextField()
@@ -28,4 +32,4 @@ class Book(models.Model):
     class Meta:
         ordering = ['created_on']
     def __str__(self):
-        return f"{self.title} with category of {self.category} written by{self.author}"
+        return f"{self.title} | category: {self.category} | author: {self.author}"
