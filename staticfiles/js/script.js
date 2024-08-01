@@ -1,0 +1,1 @@
+console.log("Connect script.js file")

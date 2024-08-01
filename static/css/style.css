@@ -1,4 +1,6 @@
-.book_link{
+
+.book-link{
+    font-weight: 700;
     text-decoration: none;
     color: #21897E;
 }
