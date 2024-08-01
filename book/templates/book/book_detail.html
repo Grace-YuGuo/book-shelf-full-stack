@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+<!-- book_detail.html content starts here -->
+{% block content %}
+
+<h1>
+    Book title is : {{ book.title}}
+</h1>
+<p> {{ book.category }}</p>
+<p> {{ book.description }}</p>
+<p> {{ book.created_on }}</p>
+
+<!-- book_detail.html content ends here -->
+{% endblock %}
