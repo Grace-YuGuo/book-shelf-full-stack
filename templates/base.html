@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>This is Django full stack project:book_shelf</title>
+    <title>Book_shelf</title>
 
     <!-- Goole Fonts CSS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -24,12 +24,12 @@
 </head>
 
 <body>
-    <h1> This is Django full stack project </h1>
-
+    <h1>Here a hero image</h1>
+    <img src="" alt="Hero Image">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"> </a>
+            <a class="navbar-brand" href="{% url 'book' %}"><span class="p2" style="color:#7EBCE6">Book</span><span style="color:#21897E">_shelf</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -48,10 +48,6 @@
                         <a class="nav-link" href="#">Log In</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
         </div>
     </nav>
