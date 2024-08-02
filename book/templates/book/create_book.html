@@ -3,12 +3,13 @@
 <!-- book_detail.html content starts here -->
 {% block content %}
 
-<h1>
-    Book title is : {{ book.title}}
-</h1>
-<p> {{ book.category }}</p>
-<p> {{ book.description | safe }}</p>
-<p> {{ book.created_on }}</p>
+  <form id="bookForm" method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button id="postbutton" type="submit">Create</button>
+  </form>
+
+
 
 <!-- book_detail.html content ends here -->
 {% endblock %}
