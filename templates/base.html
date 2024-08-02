@@ -1,5 +1,9 @@
 {% load static %}
 
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,23 +42,31 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
                     </li>
+                    
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'create_book' %}">Add A Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link {% if request.path == logout_url %}active{% endif%}" aria-current="page"
+                            href="{% url 'account_logout' %}">Log Out</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_signup' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Log In</a>
+                        <a class="nav-link {% if request.path == signin_url %}active{% endif %}" aria-current="page"
+                            href="{% url 'account_login' %}">Log In</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Log Out</a>
-                    </li>
+                    {% endif %}
+
                 </ul>
             </div>
         </div>
@@ -70,7 +82,7 @@
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
                 <div class="alert {{ message.tags }} alert-success alert-dismissible
                     fade show" id="msg" role="alert">
-                    Success: {{ message | safe }} 
+                    Success: {{ message | safe }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 {% endif %}
@@ -81,7 +93,7 @@
                 </div>
                 {% endif %}
             </div>
-            
+
             {% endfor %}
             {% endif %}
         </div>
