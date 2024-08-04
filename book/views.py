@@ -54,7 +54,10 @@ def book_detail(request, book_id):
     :template:`book/book_detail.html`
     """
     retrieved_book = get_object_or_404(Book, id=book_id)
-    return render(request,"book/book_detail.html",{"book": retrieved_book,},)
+    reviews = retrieved_book.book_reviews.all()
+    review_count =retrieved_book.book_reviews.filter(approved=True).count()
+
+    return render(request,"book/book_detail.html",{"book": retrieved_book, "reviews":reviews,"review_count":review_count,},)
 
 @login_required
 def create_book(request):
