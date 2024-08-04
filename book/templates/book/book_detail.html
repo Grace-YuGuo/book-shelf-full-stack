@@ -11,42 +11,56 @@
 <p> {{ book.created_on }}</p>
 
 {% if user.is_authenticated %}
-<!-- Displaying Reviews -->
-<div class="row">
-    <div class="col-md-8 card mb-4  mt-3 ">
-        <h3>Reviews:</h3>
-        <i class="far fa-comments"></i> {{ review_count }}
-        <div class="card-body">
-            <!-- We want a for loop inside the empty control tags
+<div class="container">
+    <!-- Displaying Reviews -->
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <h3>Reviews:</h3>
+            <i class="far fa-comments"></i> {{ review_count }}
+            <div class="card-body">
+                <!-- We want a for loop inside the empty control tags
           to iterate through each review in reviews -->
-            {% for review in reviews %}
-            <div class="p-2 reviews
+                {% for review in reviews %}
+                <div class="p-2 reviews
           {% if not review.approved and review.user == user %}
           faded{% elif not review.approved %} d-none{% endif %}">
-                <p class="font-weight-bold">
-                    {{ review.user }}
-                    <span class="font-weight-normal">
-                        {{ review.created_on }}
-                    </span> wrote:
-                </p>
-                <div id="review{{ review.id }}">
-                    {{ review.content | linebreaks }}
+                    <p class="font-weight-bold">
+                        {{ review.user }}
+                        <span class="">
+                            {{ review.created_on }}
+                        </span> wrote:
+                    </p>
+                    <div id="review{{ review.id }}">
+                        {{ review.content | linebreaks }}
+                    </div>
+                    {% if not review.approved and review.user == user %}
+                    <p class="">
+                        This review is awaiting approval
+                    </p>
+                    {% endif %}
+                    {% if user.is_authenticated and review.user == user %}
+                    <button class="btn btn-dark" review_id="{{ review.id }}">Delete</button>
+                    <button class="btn btn-danger" review_id="{{ review.id }}">Edit</button>
+                    {% endif %}
                 </div>
-                {% if not review.approved and review.user == user %}
-                <p class="">
-                    This review is awaiting approval
-                </p>
-                {% endif %}
-                {% if user.is_authenticated and review.user == user %}
-                <button class="btn btn-dark" review_id="{{ review.id }}">Delete</button>
-                <button class="btn btn-danger" review_id="{{ review.id }}">Edit</button>
-                {% endif %}
+                <!-- Our for loop ends here -->
+                {% endfor %}
             </div>
-            <!-- Our for loop ends here -->
-            {% endfor %}
+        </div> 
+        <!-- Creating New Reviews -->
+        <div class="col-md-4 card mb-4 mt-3">
+            <h3>Leave a review:</h3>
+            <p>Reviewing as :{{ user.username}}</p>
+            <form id="reviewForm" method="post">
+                {{ review_form.as_p}}
+                {% csrf_token %}
+                <button id="submitButton" type="submit" class="btn btn-signup btn-m">Submit</button>
+            </form>
+
         </div>
     </div>
 </div>
+
 {% endif %}
 
 <!-- book_detail.html content ends here -->

@@ -4,7 +4,7 @@ from django.shortcuts import render,get_object_or_404,reverse, redirect
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import BookForm
+from .forms import BookForm, ReviewForm
 from .models import Book
 
 # Create your views here.
@@ -57,7 +57,17 @@ def book_detail(request, book_id):
     reviews = retrieved_book.book_reviews.all()
     review_count =retrieved_book.book_reviews.filter(approved=True).count()
 
-    return render(request,"book/book_detail.html",{"book": retrieved_book, "reviews":reviews,"review_count":review_count,},)
+    if request.method == "POST":
+        review_form = ReviewForm(data=request.POST)
+        if review_form.is_valid():
+            review = review_form.save(commit=False)
+            review.user = request.user
+            review.book = retrieved_book
+            review.save()
+            messages.add_message(request,messages.SUCCESS,'Review submitted and awaiting approval')
+    review_form = ReviewForm()
+
+    return render(request,"book/book_detail.html",{"book": retrieved_book, "reviews":reviews,"review_count":review_count, "review_form":review_form,},)
 
 @login_required
 def create_book(request):
