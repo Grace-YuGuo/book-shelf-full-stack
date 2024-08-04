@@ -3,12 +3,14 @@
 <!-- book_detail.html content starts here -->
 {% block content %}
 
+<div class="container">
 <h1>
     Book title is : {{ book.title}}
 </h1>
 <p> {{ book.category }}</p>
 <p> {{ book.description | safe }}</p>
 <p> {{ book.created_on }}</p>
+</div>
 
 {% if user.is_authenticated %}
 <div class="container">

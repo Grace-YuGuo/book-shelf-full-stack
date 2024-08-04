@@ -55,7 +55,6 @@ def book_detail(request, book_id):
     """
     retrieved_book = get_object_or_404(Book, id=book_id)
     reviews = retrieved_book.book_reviews.all()
-    review_count =retrieved_book.book_reviews.filter(approved=True).count()
 
     if request.method == "POST":
         review_form = ReviewForm(data=request.POST)
@@ -66,6 +65,7 @@ def book_detail(request, book_id):
             review.save()
             messages.add_message(request,messages.SUCCESS,'Review submitted and awaiting approval')
     review_form = ReviewForm()
+    review_count =retrieved_book.book_reviews.filter(approved=True).count()
 
     return render(request,"book/book_detail.html",{"book": retrieved_book, "reviews":reviews,"review_count":review_count, "review_form":review_form,},)
 
