@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+<!-- book_detail.html content starts here -->
+{% block content %}
+<h2>Are you sure you want to delete "{{ book.title }}" ?</h2>
+
+  <form id="bookForm" method="POST">
+    {% csrf_token %}
+    <button id="postbutton" type="submit">Confirm Delete</button>
+  </form>
+
+  <a href="{% url 'home' %}">No, take me home</a>
+
+
+<!-- book_detail.html content ends here -->
+{% endblock %}

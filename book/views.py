@@ -62,8 +62,71 @@ def create_book(request):
             book.save()
             messages.success(request,'Book submitted and awaiting approval')
             return redirect('home')
+        else:
+            messages.error(request,f"{f.errors}")
+            return redirect("create_book")
     else:
         # handle a GET request
         form = BookForm()
         return render(request, 'book/create_book.html',{"form":form})
+
+def edit_book(request,book_id):
+    """
+    Edit an individual instance of specific book_id : model:`book.Book`.
+    
+    **Context**
+    ``book``
+        An instance of : model:`book.Book` with specific book_id passed through from url.
+
+    **Template:**
+    :template:`book/edit_book.html` or redirect 'home' for POST method
+    """
+    retrieved_book = get_object_or_404(Book, id=book_id)
+
+    if not request.user == retrieved_book.user:
+        messages.error(request,'You cannot edit an article you did not create!')
+        return redirect('home')
+
+    if request.method =='POST':
+        form = BookForm(request.POST,instance=retrieved_book)
+        if form.is_valid():
+            book = form.save(commit=False)
+            book.user= request.user
+            book.approved=False
+            book.save()
+            messages.success(request,'Book updating submitted and awaiting approval')
+            return redirect('home')
+        else:
+            messages.error(request,f"{f.errors}")
+            return redirect("edit_book")
+    else:
+        # handle a GET request
+        form = BookForm(instance=retrieved_book)
+        return render(request, 'book/edit_book.html',{"form":form})
+
+def delete_book(request,book_id):
+    """
+    Delete an individual instance of specific book_id : model:`book.Book`.
+    
+    **Context**
+    ``book``
+        An instance of : model:`book.Book` with specific book_id passed through from url.
+
+    **Template:**
+    :template:`book/delete_book.html` or redirect 'home' for POST method
+    """
+    retrieved_book = get_object_or_404(Book, id=book_id)
+
+    if not request.user == retrieved_book.user:
+        messages.error(request,'You cannot delete an article you did not create!')
+        return redirect('home')
+
+    if request.method =='POST':
+        retrieved_book.delete()
+        messages.success(request,'Your book was deleted!')
+        return redirect('home')
+    else:
+        # handle a GET request
+        return render(request, 'book/delete_book.html',{"book":retrieved_book})
+
 
