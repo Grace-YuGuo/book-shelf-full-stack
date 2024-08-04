@@ -3,6 +3,7 @@ from django.shortcuts import render,get_object_or_404,reverse, redirect
 # from django.http import HttpResponse
 from django.views import generic
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from .forms import BookForm
 from .models import Book
 
@@ -21,6 +22,19 @@ class BookList(generic.ListView):
     queryset= Book.objects.filter(approved=1)
     template_name = "book/index.html"
     paginate_by = 6
+
+# def is_creator_or_superuser(view_func):
+#     """
+#     Define a function to decide if the user is the book creator or the superuser
+#     """
+#     def wrapper(request, *args, **kwargs):
+#         book = get_object_or_404(Book, pk=kwargs['pk'])
+#         if book_user == request.user or request.user.is_superuser:
+#             return view_func(request,*args,**kwargs)
+#         else:
+#             messages.error(request,'You cannot modify an article you did not create!')
+#             return redirect('home')
+
 
 def book_detail(request, book_id):
     """
@@ -42,6 +56,7 @@ def book_detail(request, book_id):
     retrieved_book = get_object_or_404(Book, id=book_id)
     return render(request,"book/book_detail.html",{"book": retrieved_book,},)
 
+@login_required
 def create_book(request):
     """
     Create an individual instance : model:`book.Book`.
@@ -70,6 +85,7 @@ def create_book(request):
         form = BookForm()
         return render(request, 'book/create_book.html',{"form":form})
 
+@login_required
 def edit_book(request,book_id):
     """
     Edit an individual instance of specific book_id : model:`book.Book`.
@@ -83,8 +99,8 @@ def edit_book(request,book_id):
     """
     retrieved_book = get_object_or_404(Book, id=book_id)
 
-    if not request.user == retrieved_book.user:
-        messages.error(request,'You cannot edit an article you did not create!')
+    if not request.user == retrieved_book.user and not request.user.is_superuser:
+        messages.error(request,'You cannot update an article you did not create!')
         return redirect('home')
 
     if request.method =='POST':
@@ -104,6 +120,7 @@ def edit_book(request,book_id):
         form = BookForm(instance=retrieved_book)
         return render(request, 'book/edit_book.html',{"form":form})
 
+@login_required
 def delete_book(request,book_id):
     """
     Delete an individual instance of specific book_id : model:`book.Book`.
@@ -117,7 +134,7 @@ def delete_book(request,book_id):
     """
     retrieved_book = get_object_or_404(Book, id=book_id)
 
-    if not request.user == retrieved_book.user:
+    if not request.user == retrieved_book.user and not request.user.is_superuser:
         messages.error(request,'You cannot delete an article you did not create!')
         return redirect('home')
 
