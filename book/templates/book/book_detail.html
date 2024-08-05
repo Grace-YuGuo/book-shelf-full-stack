@@ -6,12 +6,12 @@
 {% block content %}
 
 <div class="container">
-<h1>
-    Book title is : {{ book.title}}
-</h1>
-<p> {{ book.category }}</p>
-<p> {{ book.description | safe }}</p>
-<p> {{ book.created_on }}</p>
+    <h1>
+        Book title is : {{ book.title}}
+    </h1>
+    <p> {{ book.category }}</p>
+    <p> {{ book.description | safe }}</p>
+    <p> {{ book.created_on }}</p>
 </div>
 
 {% if user.is_authenticated %}
@@ -37,20 +37,35 @@
                     <div id="review{{ review.id }}">
                         {{ review.content | linebreaks }}
                     </div>
+                    <div id="rating{{ review.rating }}">
+                        <p>Rating is: 
+                            {% if review.rating == 1 %}
+                                <span>Poor</span>
+                            {% elif review.rating == 2 %}
+                                <span>Fair</span>
+                            {% elif review.rating == 3 %}
+                                <span>Good</span>
+                            {% elif review.rating == 4 %}
+                                <span>Very Good</span>
+                            {% elif review.rating == 5 %}
+                                <span>Excellent</span>
+                            {% endif %}
+                        </p>
+                    </div>
                     {% if not review.approved and review.user == user %}
                     <p class="">
                         This review is awaiting approval
                     </p>
                     {% endif %}
                     {% if user.is_authenticated and review.user == user %}
-                    <button class="btn btn-dark" review_id="{{ review.id }}">Delete</button>
-                    <button class="btn btn-danger" review_id="{{ review.id }}">Edit</button>
+                    <button class="btn btn-dark btn-edit" review_id="{{ review.id }}" review_rating_id ="{{ review.rating}}">Edit</button>
+                    <button class="btn btn-danger" review_id="{{ review.id }}">Delete</button>
                     {% endif %}
                 </div>
                 <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
-        </div> 
+        </div>
         <!-- Creating New Reviews -->
         <div class="col-md-4 card mb-4 mt-3">
             <h3>Leave a review:</h3>
@@ -68,4 +83,9 @@
 {% endif %}
 
 <!-- book_detail.html content ends here -->
+{% endblock content%}
+
+<!-- extra blocks -->
+{% block extras %}
+<script src="{% static 'js/review.js' %}"></script>
 {% endblock %}

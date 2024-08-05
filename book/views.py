@@ -4,8 +4,9 @@ from django.shortcuts import render,get_object_or_404,reverse, redirect
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from .forms import BookForm, ReviewForm
-from .models import Book
+from .models import Book,Review
 
 # Create your views here.
 # Set up a test view
@@ -158,5 +159,35 @@ def delete_book(request,book_id):
     else:
         # handle a GET request
         return render(request, 'book/delete_book.html',{"book":retrieved_book})
+
+@login_required
+def edit_review(request,review_id):
+    """
+    Edit an individual instance of specific review_id of specific book_id : model:`book.Book` and `book.Review`
+    
+    **Context**
+    ``review``
+    An instance of : model:`book.Review` with specific review_id and book_id passed through from url.
+
+    **Template:**
+    :template: `book/book_detail.html`
+    """
+    if request.method == "POST":
+        review = get_object_or_404(Review, id=review_id)
+        # book = get_object_or_404(Book, id=review.book.id)
+        
+        review_form = ReviewForm(data=request.POST, instance=review)
+
+        if review_form.is_valid() and review.user == request.user:
+            # review = review_form.save(commit=False)
+            # review.book = book
+            # review.approved = False
+            review.save()
+            messages.add_message(request, messages.SUCCESS, 'Review Updated! Await approval.')
+        else:
+            messages.add_message(request, messages.ERROR, 'Error updating review!')
+
+    return HttpResponseRedirect(reverse('book_detail', args=[review.book.id]))
+
 
 
