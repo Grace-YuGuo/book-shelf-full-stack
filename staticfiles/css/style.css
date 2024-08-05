@@ -9,7 +9,8 @@ h1{
 }
 
 #bookForm{
-    width:75%;
+    width:50%;
+    text-align: center;
     color:#21897e;
-    border: 3px #21897e solid; 
+    border: 1px black solid; 
 }
