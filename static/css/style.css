@@ -9,6 +9,7 @@ h1{
 }
 
 .bookForm{
+    width:50%;
     text-align: center;
     color:#21897e;
     border: 1px black solid; 

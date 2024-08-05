@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
 
 <!-- book_detail.html content starts here -->
 {% block content %}
@@ -54,7 +56,7 @@
             <h3>Leave a review:</h3>
             <p>Reviewing as :{{ user.username}}</p>
             <form id="reviewForm" method="post">
-                {{ review_form.as_p}}
+                {{ review_form |crispy}}
                 {% csrf_token %}
                 <button id="submitButton" type="submit" class="btn btn-signup btn-m">Submit</button>
             </form>

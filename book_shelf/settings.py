@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'django_summernote',
     'cloudinary_storage',
     'cloudinary',
@@ -65,6 +67,13 @@ INSTALLED_APPS = [
 SITE_ID=1
 LOGIN_REDIRECT_URL ='/'
 LOGOUT_REDIRECT_URL ='/'
+
+# Add two crispy_form related constants:set bootstrap5 as the allowed template pack and as the default template pack for the project. 
+# This choice of default template pack is to match the Bootstrap5 CSS and JS files already used in the project base.html template.
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+
 
 # Add whitenoise middleware
 # Add allauth.account middleware

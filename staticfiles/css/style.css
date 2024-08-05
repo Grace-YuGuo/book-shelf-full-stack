@@ -8,12 +8,9 @@ h1{
     color:red;
 }
 
-#bookForm{
+.bookForm{
+    width:50%;
     text-align: center;
-    color:#21897e
-    
-}
-
-#heroimage{
-    max-height: 20vh;
+    color:#21897e;
+    border: 1px black solid; 
 }
