@@ -191,3 +191,28 @@ def edit_review(request,review_id):
 
 
 
+@login_required
+def delete_review(request, review_id):
+    """
+    Delete an individual instance of specific review_id of specific book_id : model:`book.Book` and `book.Review`
+    
+    **Context**
+    ``review``
+    An instance of : model:`book.Review` with specific review_id passed through from url.
+
+    **Template:**
+    :template: `book/book_detail.html`
+    """
+    try:
+        review = get_object_or_404(Review, id=review_id)
+    except Review.DoesNotExist:
+        return HttpResponse("Review not found", status=404)
+
+    if review.user == request.user:
+        # Perform the delete operation
+        review.delete()
+        messages.add_message(request, messages.SUCCESS, 'Review deleted')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own reviews!')
+    
+    return HttpResponseRedirect(reverse('book_detail', args=[review.book.id]))  # Redirect to a list of reviews or another appropriate page
