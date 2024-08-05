@@ -27,7 +27,7 @@
                 {% for review in reviews %}
                 <div class="p-2 reviews
           {% if not review.approved and review.user == user %}
-          faded{% elif not review.approved %} d-none{% endif %}">
+          text-bg-light{% elif not review.approved %} d-none{% endif %}">
                     <p class="font-weight-bold">
                         {{ review.user }}
                         <span class="">
