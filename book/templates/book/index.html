@@ -31,7 +31,7 @@
                             <hr />
                             <p class="card-text text-muted h6">{{ book.category}}</p>
                             <hr />
-                            <p class="card-text text-muted h6">{{ book.created_on}}</p>
+                            <p class="card-text text-muted h6">Added : {{ book.created_on}}</p>
                             {% if user.is_authenticated and book.user == user%}
                             <a href="{% url 'edit_book' book.id %}" class="btn btn-dark">Update book</a>
                             <a href="{% url 'delete_book' book.id %}" class="btn btn-danger">Delete book</a>

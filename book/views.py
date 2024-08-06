@@ -216,3 +216,7 @@ def delete_review(request, review_id):
         messages.add_message(request, messages.ERROR, 'You can only delete your own reviews!')
     
     return HttpResponseRedirect(reverse('book_detail', args=[review.book.id]))  # Redirect to a list of reviews or another appropriate page
+
+
+def about(request):
+    return render(request, 'book/about.html')
