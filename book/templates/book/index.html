@@ -6,11 +6,13 @@
 
 <!-- index.html content starts here -->
 <div class="container-fluid content">
-    <div class="row">
-        <!-- Book Entries Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
-                {% for book in book_list %}
+    <div class="col-12 mt-3 left">
+
+        {% if results %}
+        <div class="row">
+            <h2>Results</h2>
+            <ul>
+                {% for book in results %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
@@ -39,32 +41,74 @@
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-                {% endif %}
                 {% endfor %}
+            </ul>
+            {% elif query %}
+            <p>No results found for "{{ query }}".</p>
+            {% endif %}
+        </div>
+
+        <div class="row">
+            <!-- Book Entries Column -->
+            <div class="col-12 mt-3 left">
+                <div class="row">
+                    {% for book in book_list %}
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="image-container">
+                                    {% if "imageplaceholder" in book.image.url %}
+                                    <img class="card-img-top" src="{% static 'images/heroimage.jpg' %}"
+                                        alt="placeholder image">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ book.image.url }}" alt="{{ book.title }}">
+                                    {% endif %}
+                                    <div class="">
+                                        <p class="author">Author: {{ book.author }}</p>
+                                    </div>
+                                </div>
+                                <a href="{% url 'book_detail' book.id %}" class="book-link">
+                                    <h2 class="card-title">{{ book.title }}</h2>
+                                </a>
+                                <hr />
+                                <p class="card-text text-muted h6">{{ book.category}}</p>
+                                <hr />
+                                <p class="card-text text-muted h6">Added : {{ book.created_on}}</p>
+                                {% if user.is_authenticated and book.user == user%}
+                                <a href="{% url 'edit_book' book.id %}" class="btn btn-dark">Update book</a>
+                                <a href="{% url 'delete_book' book.id %}" class="btn btn-danger">Delete book</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:3 %}
+                </div>
+                <div class="row">
+                    {% endif %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="book-link"> &laquo PREV </a></li>
-            <span>......</span>
-            {% else %}
-            <p>You're at the home page!</p>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="book-link"> NEXT &raquo; </a></li>
-            {% else %}
-            <p>You're at the last page!</p>
-            {% endif %}
 
-        </ul>
-    </nav>
-    {% endif %}
+        {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}" class="book-link"> &laquo PREV </a></li>
+                <span>......</span>
+                {% else %}
+                <p>You're at the home page!</p>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}" class="book-link"> NEXT &raquo; </a></li>
+                {% else %}
+                <p>You're at the last page!</p>
+                {% endif %}
+
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
 </div>
 
 <!-- index.html content ends here -->

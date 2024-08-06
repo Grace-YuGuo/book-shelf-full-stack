@@ -220,3 +220,11 @@ def delete_review(request, review_id):
 
 def about(request):
     return render(request, 'book/about.html')
+
+def search(request):
+    query = request.GET.get('query', '')
+    results = []
+    if query:
+        results = Book.objects.filter(title=query)
+    
+    return render(request, 'book/index.html', {'results': results, 'query': query})

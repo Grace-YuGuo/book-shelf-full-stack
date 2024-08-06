@@ -47,7 +47,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}">About</a>
                     </li>
-                    
+
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'create_book' %}">Add A Book</a>
@@ -68,6 +68,10 @@
                     {% endif %}
 
                 </ul>
+                <form method="get" action="{% url 'search' %}">
+                    <input type="text" name="query" placeholder="Enter book title" value="{{ query }}">
+                    <button type="submit">Search</button>
+                </form>
             </div>
         </div>
     </nav>
