@@ -222,10 +222,13 @@ def delete_review(request, review_id):
 def about(request):
     return render(request, 'book/about.html')
 
+
+mappping_table={"Fiction":1,"Non_fiction":2,"Children's&Teenage":3,"Science_fiction":4,}
+
 def search(request):
     query = request.GET.get('query', '')
     results = []
     if query:
-        results = Book.objects.filter(Q(author=query)|Q(title=query))
+        results = Book.objects.filter(Q(author=query)|Q(title=query)|Q(category=mappping_table[query]))
     
     return render(request, 'book/index.html', {'results': results, 'query': query})
