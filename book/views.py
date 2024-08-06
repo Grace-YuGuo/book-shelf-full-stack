@@ -5,6 +5,7 @@ from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 from .forms import BookForm, ReviewForm
 from .models import Book,Review
 
@@ -225,6 +226,6 @@ def search(request):
     query = request.GET.get('query', '')
     results = []
     if query:
-        results = Book.objects.filter(title=query)
+        results = Book.objects.filter(Q(author=query)|Q(title=query))
     
     return render(request, 'book/index.html', {'results': results, 'query': query})
