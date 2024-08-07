@@ -119,7 +119,7 @@ def edit_book(request,book_id):
         return redirect('home')
 
     if request.method =='POST':
-        form = BookForm(request.POST,instance=retrieved_book)
+        form = BookForm(request.POST,request.FILES,instance=retrieved_book)
         if form.is_valid():
             book = form.save(commit=False)
             book.user= request.user
