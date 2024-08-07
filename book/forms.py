@@ -1,13 +1,15 @@
 from django import forms
+from django_summernote.widgets import SummernoteWidget
 from .models import Book,Review
 
 class BookForm(forms.ModelForm):
-    """
-    Create a book form class based on model Book inherited from ModelForm module
-    """
     class Meta:
         model = Book
-        fields = ('title','author','category','pages','image','description',)
+        fields = ('title', 'author', 'category', 'pages', 'image', 'description',)
+        widgets = {
+            'description': SummernoteWidget(),
+        }
+      
 
 class ReviewForm(forms.ModelForm):
     """

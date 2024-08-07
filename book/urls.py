@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 # Set up urlpatterns for book app
@@ -12,4 +12,5 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('view/edit_review/<review_id>',views.edit_review,name='review_edit',),
     path('view/delete_review/<review_id>',views.delete_review,name='review_delete'),
+    path('summernote/', include('django_summernote.urls')),
 ]
