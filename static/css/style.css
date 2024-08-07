@@ -1,3 +1,19 @@
+html,body{
+    height:100%;
+}
+
+body {
+    font-family: 'Lato', 'serif';
+}
+
+main{
+    flex:1 0 auto;
+    background-color: aliceblue;
+}
+
+footer{
+    flex-shrink:0;
+}
 .book-link{
     font-weight: 700;
     text-decoration: none;
@@ -10,7 +26,6 @@ h1{
 
 #bookForm{
     width:50%;
-    text-align: center;
     color:#21897e;
-    border: 1px black solid; 
+    border: 3px #21897e solid; 
 }
