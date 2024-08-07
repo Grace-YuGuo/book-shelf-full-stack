@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 <!-- book_detail.html content starts here -->
 {% block content %}
 
@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2">
       <form id="bookForm" method="POST">
-        {{ form.as_p }}
+        {{ form |crispy }}
         {% csrf_token %}
         <button id="postbutton" type="submit" class="btn btn-outline-primary">Update</button>
       </form>
