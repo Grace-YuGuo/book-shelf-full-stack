@@ -6,11 +6,11 @@
 
 <div class="container">
   <div class="row">
-    <div class="col md-8">
+    <div class="col-md-8 mt-3 offset-md-2">
       <form id="bookForm" method="POST">
         {{ form |crispy}}
         {% csrf_token %}
-        <button id="postbutton" type="submit">Create</button>
+        <button id="postbutton" type="submit" class="btn btn-outline-primary">Create</button>
       </form>
     </div>
   </div>
