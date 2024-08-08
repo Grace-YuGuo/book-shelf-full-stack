@@ -229,6 +229,9 @@ def search(request):
     query = request.GET.get('query', '')
     results = []
     if query:
-        results = Book.objects.filter(Q(author=query)|Q(title=query)|Q(category=mappping_table[query]))
+        results = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
+
+    if query =="Fiction" or query =="Non_fiction" or query =="Children's&Teenage" or query =="Science_fiction":
+        results = Book.objects.filter(category=mappping_table[query])
     
     return render(request, 'book/index.html', {'results': results, 'query': query})
