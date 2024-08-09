@@ -5,7 +5,7 @@
 
  The book_shelf website is primary to provide an online book sharing and recommendation community for those who enjoy sharing their reading experiences and recommendations with others.  It provides easy access to summaries, reviews, and ratings, helping users discover new books. Basedd on the user's reading history, preferences, and interests, they can connect with like-minded readers.
 
-![Responsive Mockup](documentation/screenshots/Screenshot1_responsive.webp)
+![Responsive Mockup](documentation/screenshots/Screenshot1.responsive.webp)
 
 [Link to the live site](https://book-shelf-e3665f129252.herokuapp.com/)
 
@@ -196,7 +196,7 @@ Test Result
 ### Search a book
 Test Result
 
-## Automatic test
+[Back to Top](#top)
 
 # technologies-used
 The technologies implemented in this application included HTML5, CSS, Bootstrap, Python, Javascript and Django.
@@ -225,6 +225,65 @@ The technologies implemented in this application included HTML5, CSS, Bootstrap,
 
 [Back to Top](#top)
 
-# Deployment :
+# Deployment
 
-# Credit:
+## Deployment Guide
+### Deployment Steps:
+- Creating the Heroku App
+- Begin by signing up or logging in to Heroku.
+- In the Heroku Dashboard, click on 'New' and then select 'Create New App'.
+- Choose a unique name for your project.
+- Select the closest region in this case is EURO Region
+- Click on "Create App".
+- In the "Deploy" tab, choose GitHub as the deployment method.
+- Connect your GitHub account and find/connect your GitHub repository.
+
+### Setting Up Environment Variables
+- Create env.py in the top level of the Django app.
+- Import os in env.py.
+- Set up necessary environment variables in env.py, including the secret key and database URL.
+- Update settings.py to use environment variables for secret key and database.
+- Configure environment variables in the Heroku "Settings" tab under "Config Vars".
+- Migrate the models to the new database connection in the terminal.
+- Configure static files and templates directories in settings.py.
+- Add Heroku to the ALLOWED_HOSTS list.
+
+### Creating Procfile and Pushing Changes
+- Create a Procfile in the top level directory.
+- Add the command to run the project in the Procfile.
+- Add, commit, and push the changes to GitHub.
+
+### Heroku Deployment
+- In Heroku, navigate to the Deployment tab and deploy the branch manually.
+- Monitor the build logs for any errors.
+- Upon successful deployment, Heroku will display a link to the live site.
+- Make sure to resolve any deployment errors by adjusting the code as necessary.
+
+### Forking the Repository
+Forking the GitHub Repository allows you to create a copy of the original repository without affecting it. Follow these steps:
+
+- Log in to GitHub or create an account.
+- Visit the repository link.
+- Click on "Fork" at the top of the repository.
+
+### Creating a Clone of the Repository
+Creating a clone enables you to make a local copy of the repository. Follow these steps:
+
+- Navigate to the Sojourn Scribbles repository.
+- Click on the <>Code button.
+- Select the "HTTPS" option under the "Local" tab and copy the URL.
+- Open your terminal and change the directory to your desired location.
+- Use git clone followed by the copied repository URL.
+
+[Back to Top](#top)
+
+# Credits
+## Images 
+-Background image and book featured images for the mock content were taken from free stock photos on Pexels
+
+## Code
+- Code Institute course content for providing the knowledge and guidance to build the project
+- GitHub user katiejanecoughlan for sharing a best practice README structure
+- Course Facilitator Alex/David
+- Tutor Kevin /Martin/ Spencers
+- Fellow cohort peers

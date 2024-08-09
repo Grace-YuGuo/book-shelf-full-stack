@@ -9,9 +9,9 @@
     <h1>
         Book title is : {{ book.title}}
     </h1>
-    <p> {{ book.category }}</p>
+    <p> Category is: {{ book.category }}</p>
     <p> {{ book.description | safe }}</p>
-    <p> {{ book.created_on }}</p>
+    <p> Book record is added: {{ book.created_on }}</p>
 </div>
 
 {% if user.is_authenticated %}
