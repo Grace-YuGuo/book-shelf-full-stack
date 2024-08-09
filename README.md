@@ -40,6 +40,7 @@
 [Back to Top](#top)
 
 
+# user-experience-ux
 
 ## Overview
 
@@ -122,6 +123,8 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 - S ( Approve book reviews | Approve book | About page | Search book)
 - CO (View paginated books | Templates styling | )
 - W (Log in via social media account | Profile page)
+
+[Back to Top](#top)
 
 # Features
 
@@ -287,3 +290,5 @@ Creating a clone enables you to make a local copy of the repository. Follow thes
 - Course Facilitator Alex/David
 - Tutor Kevin /Martin/ Spencers
 - Fellow cohort peers
+
+[Back to Top](#top)
