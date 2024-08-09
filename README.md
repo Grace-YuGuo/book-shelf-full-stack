@@ -76,25 +76,32 @@ The colour schemes generated from [cooler](https://coolors.co/c9daea-03f7eb-00b2
 
 # agile
 
-## Design 
-### Colour schemes:
-### Typography:
-### Features
+## Agile development
 
-## Future features:
-- Data Models
-- User FLow Chart
+For the development of Sojourn Scribbles, I adopted an Agile methodology to ensure iterative and efficient progress throughout the project lifecycle. Central to this approach was the utilization of a Kanban board hosted on GitHub Projects. You can view the project board here.
+
+
+
+
+# Features
+
+## Features implemented
+
+## Future features
+- Log in via social account
+- Profile page
+
+
+# Testing 
 
 ## Validation
-- HTML
-- CSS
-- Python
+### HTML
+### CSS
+### Python
 
-## Responsiveness
+## Manual test
 
-## Testing
-
-## Tools and Technologies Used:
+# Tools and Technologies Used:
 The technologies implemented in this application included HTML5, CSS, Bootstrap, Python, Javascript and Django.
 
 - Python used as the back-end programming language.
@@ -115,20 +122,9 @@ The technologies implemented in this application included HTML5, CSS, Bootstrap,
 
 - Balsamiq utilized for design and prototyping(wireframes).
 
-- Use cooler https://coolors.co/c9daea-03f7eb-00b295-191516-ab2346 for colour scheme.
-
 - Google,Stack Overflow and ChatGPT utilized for general research or solving a bug, information gathering, and various online tools.
 
-## Languages Used:
-- HTML5
-- CSS
-- JavaScript
-- Python
 
-## Deployment :
+# Deployment :
 
-
-## Testing & Bugs
-
-
-## Credit:
+# Credit:
