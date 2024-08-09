@@ -113,35 +113,92 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 - [#11 About ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/11)
 - [#12 Templates styling ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/12)
 - [#13 Log in via social media accounts ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/13)
-- [#14 Open a book ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/14)
-- [#15 View paginated lists of books ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/16)
-- [#16 Open a book ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/17)
+- [#14 Search the book by title author and category ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/14)
+- [#15 Manual and automatic testing ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/16)
+- [#16 Profile ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/17)
 
 ### MOSCOW Details
-MO (Image of area, Full CRUD for Comments, Easy to Naviagate)
-S (Video of the are in topic: this would be nice but slows site)
-CO (Ratings sectioon for each area: Needs further thought)
-W (API for Advertising)
+- MO (Book CRUD | Review CRUD | Account registration | )
+- S ( Approve book reviews | Approve book | About page | Search book)
+- CO (View paginated books | Templates styling | )
+- W (Log in via social media account | Profile page)
 
 # Features
 
 ## Features implemented
 
+- Full CRUD on review of a book: the logged-in site user can create, read, edit and delete their review on a book
+- Full CRUD on a book: the logged-in site user can create,read,edit and delete their book
+- Search a book via key words in book title or book author or 4 categories(Fiction,Non_fiction,Science_fiction and Children's&Teenage books)
+- The site admin maintain the submitted books and reviews of specific books.
+
+- ![book Mockup](documentation/screenshots/book_add.webp)
+- ![book_rud Mockup](documentation/screenshots/book_rud.webp)
+- ![review_crud](documentation/screenshots/reviews_crud.webp)
+- ![search](documentation/screenshots/search.webp)
+
+### Navbar and Footer:
+- Unified Navbar and footer on every page
+- Navbar's changes as signing in status,logged in user can see add a book tab
+- Footer includes Social Links and github links
+
+### Index page:
+- The homepage provides the list of books
+- It can be accessed without signing in
+
+### About Us page:
+- About page includes a short brief about the book_shelf site
+- It can be accessed without signing in
+
+### Responsiveness
+- There's a hamburger navbar on mobile size screen
+
 ## Future features
 - Log in via social account
 - Profile page
 
+[Back to Top](#top)
 
 # Testing 
 
 ## Validation
 ### HTML
+[W3 HTML Validator](https://validator.w3.org/) to check the HTML
+screenshot
+
 ### CSS
+[W3 CSS Validator](https://jigsaw.w3.org/css-validator/) to check the CSS
+screenshot
+
 ### Python
+[CI Python Linter](https://pep8ci.herokuapp.com/) to check python scripts
+screenshot
 
 ## Manual test
+### Home page
+Test Result
 
-# Tools and Technologies Used:
+### About page
+Test Result
+
+### Footer/NAVBar
+Test Result
+
+### Login/logout/registration page
+Test Result
+
+### Review CRUD
+Test Result
+
+### Book CRUD
+Test Result
+
+### Search a book
+Test Result
+
+## Automatic test
+
+# technologies-used
 The technologies implemented in this application included HTML5, CSS, Bootstrap, Python, Javascript and Django.
 
 - Python used as the back-end programming language.
@@ -156,6 +213,8 @@ The technologies implemented in this application included HTML5, CSS, Bootstrap,
 
 - PostgreSQL used as the ratioanl database.
 
+- Lucidchart - for database ER diagrams
+
 - Heroku used for hosting the deployed full stack site.
 
 - Cloudinary used for online static file storage.
@@ -164,6 +223,7 @@ The technologies implemented in this application included HTML5, CSS, Bootstrap,
 
 - Google,Stack Overflow and ChatGPT utilized for general research or solving a bug, information gathering, and various online tools.
 
+[Back to Top](#top)
 
 # Deployment :
 
