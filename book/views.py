@@ -21,6 +21,9 @@ from .models import Book,Review
 
 # Set up a generic view inherites from generic.ListView class to display all the books
 class BookList(generic.ListView):
+    """
+    Set up a generic view inherites from generic.ListView class to display all the books
+    """
     queryset= Book.objects.filter(approved=1)
     template_name = "book/index.html"
     paginate_by = 6
@@ -220,12 +223,25 @@ def delete_review(request, review_id):
 
 
 def about(request):
+    """
+    Render the about page when click 'about; in navbar.
+    """
     return render(request, 'book/about.html')
 
 
 mappping_table={"Fiction":1,"Non_fiction":2,"Children's&Teenage":3,"Science_fiction":4,}
 
 def search(request):
+    """
+    Search by book title or book author with key words or search by category of "Fiction" "Non_fiction" "Children's&Teenage" or "Science_fiction"
+    
+    **Context**
+    ``Books``
+    Results: model:`book.Review` with specific searching key words.
+
+    **Template:**
+    :template: `book/index.html`
+    """
     query = request.GET.get('query', '')
     results = []
     if query:

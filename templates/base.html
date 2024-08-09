@@ -27,11 +27,11 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!-- Summernote CSS and JS -->
-    <link href="{% static 'django_summernote/summernote.css' %}" rel="stylesheet">
+    <!-- <link href="{% static 'django_summernote/summernote.css' %}" rel="stylesheet">
     <link href="{% static 'django_summernote/django_summernote.css' %}" rel="stylesheet">
     <script src="{% static 'django_summernote/jquery.js' %}"></script>
     <script src="{% static 'django_summernote/summernote.js' %}"></script>
-    <script src="{% static 'django_summernote/django_summernote.js' %}"></script>
+    <script src="{% static 'django_summernote/django_summernote.js' %}"></script> -->
 </head>
 
 <body>
@@ -172,7 +172,7 @@
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
 
-    <script>
+    <!-- <script>
         $(document).ready(function() {
             $('#id_description').summernote({
                 height: 300, // set editor height
@@ -181,7 +181,7 @@
                 focus: true, //set focus to editable area after initializing summernote
             });
         });
-    </script>
+    </script> -->
 
     {% block extras %}
     {% endblock %}
