@@ -78,10 +78,50 @@ The colour schemes generated from [cooler](https://coolors.co/c9daea-03f7eb-00b2
 
 ## Agile development
 
-For the development of Sojourn Scribbles, I adopted an Agile methodology to ensure iterative and efficient progress throughout the project lifecycle. Central to this approach was the utilization of a Kanban board hosted on GitHub Projects. You can view the project board here.
+For the development of book_shelf, Agile methodology used to ensure iterative and efficient progress throughout the project lifecycle. Central to this approach was the utilization of a Kanban board hosted on GitHub Projects. You can view the project board as: [KANBAN Board](https://github.com/users/Grace-YuGuo/projects/6).
 
+ -![Kanban Mockup](documentation/screenshots/Kanban_board.webp)
 
+### Kanban overview
+The Kanban board served as a visual representation of the project's progress and allowed for effective task management. It consisted of the following sections:
 
+- Todo: This section contained all the tasks and user stories that were yet to be prioritized for implementation.
+- In Progress: Work in progress was tracked here, indicating tasks actively being worked on.
+- Done: Tasks that were completed successfully were moved to this column.
+
+### User Stories Integration
+User stories played a pivotal role in shaping the development process, ensuring that features were aligned with user needs. These user stories were mapped onto the Kanban board, guiding the prioritization and implementation of tasks.
+
+### Task Management
+In addition to tracking user stories, the Kanban board served as a comprehensive task list. I utilized it to break down user stories into smaller, actionable tasks, ensuring clear and manageable objectives for development. This granular approach facilitated efficient progress tracking and enhanced team collaboration.
+
+By leveraging Agile principles and utilizing the Kanban board effectively, the development of book_shelf remained focused, adaptable, and responsive to evolving requirements, resulting in a more robust and user-centric Django blog application.
+
+## User Stories Overview
+### List of User Stories
+
+- [#1 View paginated lists of books ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/1)
+- [#2 Open a book ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/2)
+- [#3 View book reviews ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/3)
+- [#4 Review on a book ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/4)
+- [#5 Modify or delete a review on a book ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/5)
+- [#6 Add a book ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/6)
+- [#7 Modify or delete book ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/7)
+- [#8 Account registration](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/8)
+- [#9 Manage books ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/9)
+- [#10 Approve book reviews](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/10)
+- [#11 About ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/11)
+- [#12 Templates styling ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/12)
+- [#13 Log in via social media accounts ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/13)
+- [#14 Open a book ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/14)
+- [#15 View paginated lists of books ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/16)
+- [#16 Open a book ](https://github.com/Grace-YuGuo/book-shelf-full-stack/issues/17)
+
+### MOSCOW Details
+MO (Image of area, Full CRUD for Comments, Easy to Naviagate)
+S (Video of the are in topic: this would be nice but slows site)
+CO (Ratings sectioon for each area: Needs further thought)
+W (API for Advertising)
 
 # Features
 
