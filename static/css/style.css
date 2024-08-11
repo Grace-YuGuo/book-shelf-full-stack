@@ -30,3 +30,8 @@ h1{
     border: 3px #21897e solid; 
     border-radius: 2%;
 }
+
+#about_page{
+  color:antiquewhite;
+  background-color: #3ba99c;
+}

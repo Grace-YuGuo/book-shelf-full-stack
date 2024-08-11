@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-<!-- book_detail.html content starts here -->
+<!-- create_book.html content starts here -->
 {% block content %}
 
 <div class="container">
@@ -10,12 +10,14 @@
       <form id="bookForm" method="POST" style="width: 725px" enctype='multipart/form-data'>
         {{ form |crispy}}
         {% csrf_token %}
-        <button id="postbutton" type="submit" class="btn btn-outline-primary">Create</button>
+        <div class="text-center">
+          <button id="postbutton" type="submit" class="btn btn-outline-primary">Create</button>
+        </div>
       </form>
     </div>
   </div>
 </div>
 
 
-<!-- book_detail.html content ends here -->
+<!-- create_book.html content ends here -->
 {% endblock %}

@@ -1,21 +1,33 @@
 {% extends "base.html" %}
 
-<!-- book_detail.html content starts here -->
+<!-- delete_book.html content starts here -->
 {% block content %}
-<h2>Are you sure you want to delete "{{ book.title }}" ?</h2>
+<h2 class="text-center">Are you sure you want to delete "{{ book.title }}" ?</h2>
 
 <div class="container">
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2">
-      <form id="bookForm" method="POST">
+      <form id="bookForm" method="POST" style="border-style: none;">
         {% csrf_token %}
-        <p>Confirm: </p>
+        <p>  Confirm: </p>
         <button id="postbutton" type="submit" class="btn btn-outline-primary">Confirm Delete</button>
       </form>
+    
 
       <div class="mt-3">
-        <p>Or :</p>
-        <a href="{% url 'home' %}">No, take me home</a>
+        <p style="color: #3ba99c">Or :</p>
+        <a href="{% url 'home' %}" class="btn btn-outline-primary">No, take me home</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
       </div>
     </div>
   </div>
@@ -23,5 +35,5 @@
 
 
 
-<!-- book_detail.html content ends here -->
+<!-- delete_book.html content ends here -->
 {% endblock %}
