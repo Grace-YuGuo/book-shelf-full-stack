@@ -2,8 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
-# Create your models here.
-
+# Define the turple for 5 ratings as one field of review model
 RATINGS =  ((1, "Poor"),(2, "Fair"),(3, "Good"),(4, "Very Good"),(5,"Excellent"))
 
 class Category(models.Model):

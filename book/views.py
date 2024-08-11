@@ -1,6 +1,4 @@
 from django.shortcuts import render,get_object_or_404,reverse, redirect
-# from django.views.generic import TemplateView
-# from django.http import HttpResponse
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -8,16 +6,6 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 from .forms import BookForm, ReviewForm
 from .models import Book,Review
-
-# Create your views here.
-# Set up a test view
-# def book(request):
-#     return HttpResponse('hello book - John')
-# class HomePage(TemplateView):
-#     """
-#     DISPLAY HOMEPAGE
-#     """
-#     template_name = 'index.html'
 
 # Set up a generic view inherites from generic.ListView class to display all the books
 class BookList(generic.ListView):
@@ -28,19 +16,7 @@ class BookList(generic.ListView):
     template_name = "book/index.html"
     paginate_by = 6
 
-# def is_creator_or_superuser(view_func):
-#     """
-#     Define a function to decide if the user is the book creator or the superuser
-#     """
-#     def wrapper(request, *args, **kwargs):
-#         book = get_object_or_404(Book, pk=kwargs['pk'])
-#         if book_user == request.user or request.user.is_superuser:
-#             return view_func(request,*args,**kwargs)
-#         else:
-#             messages.error(request,'You cannot modify an article you did not create!')
-#             return redirect('home')
-
-
+# Set up a view to show the book detail
 def book_detail(request, book_id):
     """
     Display an individual : model:`book.Book`.
@@ -61,6 +37,7 @@ def book_detail(request, book_id):
     retrieved_book = get_object_or_404(Book, id=book_id)
     reviews = retrieved_book.book_reviews.all()
 
+    # Save submitted review to the specific book and send messages after submission
     if request.method == "POST":
         review_form = ReviewForm(data=request.POST)
         if review_form.is_valid():
@@ -74,6 +51,7 @@ def book_detail(request, book_id):
 
     return render(request,"book/book_detail.html",{"book": retrieved_book, "reviews":reviews,"review_count":review_count, "review_form":review_form,},)
 
+# Set up a view to show  "add a book" page
 @login_required
 def create_book(request):
     """
@@ -86,6 +64,7 @@ def create_book(request):
     **Template:**
     :template:`book/create_book.html` or redirect 'home' for POST method
     """
+    # Save submitted book and send messages after submission
     if request.method =='POST':
         form = BookForm(request.POST)
         if form.is_valid():
@@ -103,6 +82,7 @@ def create_book(request):
         form = BookForm()
         return render(request, 'book/create_book.html',{"form":form})
 
+# Set up a view to show  "update a book" page after clicking on "update" button below one specific book
 @login_required
 def edit_book(request,book_id):
     """
@@ -115,12 +95,14 @@ def edit_book(request,book_id):
     **Template:**
     :template:`book/edit_book.html` or redirect 'home' for POST method
     """
+    # Retrieve the specific book details to edit
     retrieved_book = get_object_or_404(Book, id=book_id)
 
     if not request.user == retrieved_book.user and not request.user.is_superuser:
         messages.error(request,'You cannot update an article you did not create!')
         return redirect('home')
 
+    # Save edited book and send messages after submission
     if request.method =='POST':
         form = BookForm(request.POST,request.FILES,instance=retrieved_book)
         if form.is_valid():
@@ -138,6 +120,7 @@ def edit_book(request,book_id):
         form = BookForm(instance=retrieved_book)
         return render(request, 'book/edit_book.html',{"form":form})
 
+# Set up a view to show  "delete a book" page after clicking on "delete" button below one specific book
 @login_required
 def delete_book(request,book_id):
     """
@@ -150,12 +133,14 @@ def delete_book(request,book_id):
     **Template:**
     :template:`book/delete_book.html` or redirect 'home' for POST method
     """
+    # Retrieve the specific book details to delete
     retrieved_book = get_object_or_404(Book, id=book_id)
 
     if not request.user == retrieved_book.user and not request.user.is_superuser:
         messages.error(request,'You cannot delete an article you did not create!')
         return redirect('home')
 
+    # Confirm delete or back to home page and send messages after submission
     if request.method =='POST':
         retrieved_book.delete()
         messages.success(request,'Your book was deleted!')
@@ -164,6 +149,7 @@ def delete_book(request,book_id):
         # handle a GET request
         return render(request, 'book/delete_book.html',{"book":retrieved_book})
 
+# Set up a view to show edit review page after clicking the "Edit" buttton below one specific review which is created by the same user
 @login_required
 def edit_review(request,review_id):
     """
@@ -176,16 +162,13 @@ def edit_review(request,review_id):
     **Template:**
     :template: `book/book_detail.html`
     """
+    # Retrieve the review to edit 
     if request.method == "POST":
         review = get_object_or_404(Review, id=review_id)
-        # book = get_object_or_404(Book, id=review.book.id)
-        
         review_form = ReviewForm(data=request.POST, instance=review)
 
+        # Save the review and send out messages
         if review_form.is_valid() and review.user == request.user:
-            # review = review_form.save(commit=False)
-            # review.book = book
-            # review.approved = False
             review.save()
             messages.add_message(request, messages.SUCCESS, 'Review Updated! Await approval.')
         else:
@@ -194,7 +177,7 @@ def edit_review(request,review_id):
     return HttpResponseRedirect(reverse('book_detail', args=[review.book.id]))
 
 
-
+# Set up a view to show delete review page after clicking the "Delete" buttton below one specific review which is created by the same user
 @login_required
 def delete_review(request, review_id):
     """
@@ -215,13 +198,14 @@ def delete_review(request, review_id):
     if review.user == request.user:
         # Perform the delete operation
         review.delete()
+        # Send messages after deletion
         messages.add_message(request, messages.SUCCESS, 'Review deleted')
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own reviews!')
     
     return HttpResponseRedirect(reverse('book_detail', args=[review.book.id]))  # Redirect to a list of reviews or another appropriate page
 
-
+# Set up a review after click the "About" tab in navbar
 def about(request):
     """
     Render the about page when click 'about; in navbar.
@@ -229,8 +213,9 @@ def about(request):
     return render(request, 'book/about.html')
 
 
+# Define the mapping table for category foreign field in book model
 mappping_table={"Fiction":1,"Non_fiction":2,"Children's&Teenage":3,"Science_fiction":4,}
-
+# Set up a review after click the "Search" button in navbar
 def search(request):
     """
     Search by book title or book author with key words or search by category of "Fiction" "Non_fiction" "Children's&Teenage" or "Science_fiction"
@@ -242,11 +227,15 @@ def search(request):
     **Template:**
     :template: `book/index.html`
     """
+    # Assgin user' searching input to variable query
     query = request.GET.get('query', '')
+    # Define variable results for searching results
     results = []
+    # Serach by book title key words or author key words
     if query:
         results = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
-
+    
+    # Search by category of Fiction, Non_fiction, Children's&Teenage or Science_fiction
     if query =="Fiction" or query =="Non_fiction" or query =="Children's&Teenage" or query =="Science_fiction":
         results = Book.objects.filter(category=mappping_table[query])
     
