@@ -3,14 +3,14 @@
 
 ## Purpose/Target Audience
 
- The book_shelf website is primary to provide an online book sharing and recommendation community for those who enjoy sharing their reading experiences and recommendations with others.  It provides easy access to summaries, reviews, and ratings, helping users discover new books. Basedd on the user's reading history, preferences, and interests, they can connect with like-minded readers.
+ The book_shelf website is primary to provide an online book sharing and recommendation community for those who enjoy sharing their reading experiences and recommendations with others. It provides easy access to book summaries, reviews, and ratings, helping users discover new books. Based on the user's reading history, preferences, and interests, they can connect with like-minded readers.
 
 ![Responsive Mockup](documentation/screenshots/Screenshot1.responsive.webp)
 
 [Link to the live site](https://book-shelf-e3665f129252.herokuapp.com/)
 
 ## Index – Table of Contents
-* [User Experience (UX)](#user-experience-ux) 
+* [User Experience (UX)](#ser-experience-ux) 
 * [Agile](#agile)
 * [Features](#features)
 * [Technologies Used](#technologies-used)
@@ -23,15 +23,15 @@
 
 ![Datastructure Mockup](documentation/screenshots/Screenshot2_datamodel.webp)
 
-- After project purpose decided, lucichart used to implement to plan the database structure.
-- The above diagram is serving as an initial guide to indicate the types and relationships between data stored.
+- After project purpose decided, lucichart is used to implement and plan the database structure.
+- The above diagram is serving as an guide to indicate the field types and relationships between data stored in database.
 
 ## Data models
 
 - User model
  - -  Django pre-defined class-based model. Username and password implemented to login.
 - Book model
- - - | title | CharField | | pages | integerField | | author | CharField | | description | TextField | | created_on | DateTimeField | | approval | BooleanField | | category | ForeignKey | | Updated_on | DateTimeField | | image | CloudinaryField || user | ForeignKey |
+ - - | title | CharField | | pages | integerField | | author | CharField | | description | TextField | | created_on | DateTimeField | | approval | BooleanField | | category | ForeignKey | | updated_on | DateTimeField | | image | CloudinaryField || user | ForeignKey |
 - Review model
  - - | book | ForeignKey | | user | ForeignKey | | content | TextField | | created_on | DateTimeField | | approval | BooleanField |
 - Category model
@@ -44,13 +44,13 @@
 
 ## Overview
 
-The UX design focuses on creating an engaging and welcoming environment. After signup and logging in, the site user would be able to add a new book they would like to share with other users and add a review to any other books. They can search book by book name, book author or book category.
+The UX design focuses on creating an engaging and welcoming environment. After signup and logging in, the site user would be able to add a new book they would like to share with other users and add a review to any books. They can search book by book name key words, book author key words or book 4 categories(Fiction,Non_fiction,Science_fiction and Children'S&Teenage).
 
 ## Site User
 The primary users of book_shelf are anyone who would like to share or recommend books based on their reading experiences and preferences. It aims to provide a supportive and inclusive community where the site users can share their feelings about books and recommend books to other like-minded readers. They value authenticity, empathy, and the opportunity to engage with like-minded individuals in a safe and welcoming space.
 
 ## Purposes for the site
-To provide inspirations for someone who is seeking new books to read and build meaningful connections with other readers. The site commits for an environment where users feel encouraged to share or recommend their books.
+ The site commits for an environment where users feel encouraged to share or recommend their books.To provide inspirations for someone who is seeking new books to read and build meaningful connections with other readers.
 
 ## Wireframes created in Balsamic
 - Home Page for mobile screen
@@ -72,6 +72,9 @@ To provide inspirations for someone who is seeking new books to read and build m
 The colour schemes generated from [cooler](https://coolors.co/c9daea-03f7eb-00b295-191516-ab2346) as below:
 ![Colourscheme Mockup](documentation/colour-palette/color_scheme.webp)
 
+### Font
+[Googlefont](https://fonts.google.com/) of Lato used.
+
 [Back to Top](#top)
 
 
@@ -79,7 +82,7 @@ The colour schemes generated from [cooler](https://coolors.co/c9daea-03f7eb-00b2
 
 ## Agile development
 
-For the development of book_shelf, Agile methodology used to ensure iterative and efficient progress throughout the project lifecycle. Central to this approach was the utilization of a Kanban board hosted on GitHub Projects. You can view the project board as: [KANBAN Board](https://github.com/users/Grace-YuGuo/projects/6).
+In the development life-cycle of book_shelf, Agile methodology was used to ensure iterative and efficient progress throughout the project development. Central to this approach was the utilization of a Kanban board hosted on GitHub Projects. You can view the project board as: [KANBAN Board](https://github.com/users/Grace-YuGuo/projects/6).
 
  -![Kanban Mockup](documentation/screenshots/Kanban_board.webp)
 
@@ -94,9 +97,9 @@ The Kanban board served as a visual representation of the project's progress and
 User stories played a pivotal role in shaping the development process, ensuring that features were aligned with user needs. These user stories were mapped onto the Kanban board, guiding the prioritization and implementation of tasks.
 
 ### Task Management
-In addition to tracking user stories, the Kanban board served as a comprehensive task list. I utilized it to break down user stories into smaller, actionable tasks, ensuring clear and manageable objectives for development. This granular approach facilitated efficient progress tracking and enhanced team collaboration.
+In addition to tracking user stories, the Kanban board served as a comprehensive task list. Tasks utilized as breaking down user stories into smaller, actionable units, ensuring clear and manageable objectives for development. This specific approach facilitated efficient progress tracking.
 
-By leveraging Agile principles and utilizing the Kanban board effectively, the development of book_shelf remained focused, adaptable, and responsive to evolving requirements, resulting in a more robust and user-centric Django blog application.
+By leveraging Agile principles and utilizing the Kanban board effectively, the development of book_shelf remained focused, adaptable, and responsive to evolving requirements, resulting in a more robust and user-centric Django application.
 
 ## User Stories Overview
 ### List of User Stories
@@ -143,14 +146,14 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 ### Navbar and Footer:
 - Unified Navbar and footer on every page
 - Navbar's changes as signing in status,logged in user can see add a book tab
-- Footer includes Social Links and github links
+- Footer includes social links and github links
 
 ### Index page:
 - The homepage provides the list of books
 - It can be accessed without signing in
 
 ### About Us page:
-- About page includes a short brief about the book_shelf site
+- About page includes a short brief instruction on the book_shelf site
 - It can be accessed without signing in
 
 ### Responsiveness
@@ -158,7 +161,12 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 
 ## Future features
 - Log in via social account
+    - At the home page, the site user can select the logging in approach via social medai account.
+    - The user can select via facebook, twitter, or instgram account to log in and log in successfully with approriate incredientials.
 - Profile page
+    - Given a logged-in site user, view the summary list of books and reviews user submitted in a seperate page.
+    - Given a logged-in site user, view the status of the books and reviews user submitted.
+    - Given a logged-in site user, user can check and update their name and password.
 
 [Back to Top](#top)
 
@@ -202,7 +210,7 @@ Test Result
 [Back to Top](#top)
 
 # technologies-used
-The technologies implemented in this application included HTML5, CSS, Bootstrap, Python, Javascript and Django.
+The technologies implemented in this application included HTML5, CSS, Bootstrap, Javascript , Python , PostgreSQL , Heroku and Django.
 
 - Python used as the back-end programming language.
 
@@ -216,7 +224,7 @@ The technologies implemented in this application included HTML5, CSS, Bootstrap,
 
 - PostgreSQL used as the ratioanl database.
 
-- Lucidchart - for database ER diagrams
+- Lucidchart - for database ER diagrams.
 
 - Heroku used for hosting the deployed full stack site.
 
@@ -232,24 +240,23 @@ The technologies implemented in this application included HTML5, CSS, Bootstrap,
 
 ## Deployment Guide
 ### Deployment Steps:
-- Creating the Heroku App
-- Begin by signing up or logging in to Heroku.
+- Creating the Heroku App account
 - In the Heroku Dashboard, click on 'New' and then select 'Create New App'.
-- Choose a unique name for your project.
+- Create a unique name for your project.
 - Select the closest region in this case is EURO Region
 - Click on "Create App".
 - In the "Deploy" tab, choose GitHub as the deployment method.
 - Connect your GitHub account and find/connect your GitHub repository.
 
 ### Setting Up Environment Variables
+- Add Heroku to the ALLOWED_HOSTS list.
+- Configure static files and templates directories in settings.py.
+- Migrate the models to the new database connection in the terminal.
 - Create env.py in the top level of the Django app.
 - Import os in env.py.
 - Set up necessary environment variables in env.py, including the secret key and database URL.
 - Update settings.py to use environment variables for secret key and database.
 - Configure environment variables in the Heroku "Settings" tab under "Config Vars".
-- Migrate the models to the new database connection in the terminal.
-- Configure static files and templates directories in settings.py.
-- Add Heroku to the ALLOWED_HOSTS list.
 
 ### Creating Procfile and Pushing Changes
 - Create a Procfile in the top level directory.
@@ -263,16 +270,16 @@ The technologies implemented in this application included HTML5, CSS, Bootstrap,
 - Make sure to resolve any deployment errors by adjusting the code as necessary.
 
 ### Forking the Repository
-Forking the GitHub Repository allows you to create a copy of the original repository without affecting it. Follow these steps:
+Forking the GitHub Repository allows you to create a copy of the original repository without affecting it. Steps are as below:
 
 - Log in to GitHub or create an account.
 - Visit the repository link.
 - Click on "Fork" at the top of the repository.
 
 ### Creating a Clone of the Repository
-Creating a clone enables you to make a local copy of the repository. Follow these steps:
+Creating a clone enables you to make a local copy of the repository. Steps are as below:
 
-- Navigate to the Sojourn Scribbles repository.
+- Navigate to the book_shelf repository.
 - Click on the <>Code button.
 - Select the "HTTPS" option under the "Local" tab and copy the URL.
 - Open your terminal and change the directory to your desired location.
@@ -282,13 +289,15 @@ Creating a clone enables you to make a local copy of the repository. Follow thes
 
 # Credits
 ## Images 
--Background image and book featured images for the mock content were taken from free stock photos on Pexels
+- Background image and book featured images for the mock content were taken from free stock photos on [Pexels](https://www.pexels.com/)
+- Image format conversion done via [freeconvernt](https://www.freeconvert.com/png-to-webp)
+ 
 
 ## Code
 - Code Institute course content for providing the knowledge and guidance to build the project
-- GitHub user katiejanecoughlan for sharing a best practice README structure
-- Course Facilitator Alex/David
-- Tutor Kevin /Martin/ Spencers
-- Fellow cohort peers
+- GitHub user katiejanecoughlan and Gordon-Meade for sharing a best practice README structure
+- Course Facilitator Alexander and David Calikes continued support and guidelines.
+- Tutor Kevin, Spencers and Martin's subject matter sessions and coding sessions.
+- Fellow cohort peers support and knowledge sharing during the course learning journey.
 
 [Back to Top](#top)
