@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+# Import evn.py if os finds env.py file
 if os.path.isfile('env.py'):
     import env
 
@@ -31,7 +32,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
+# ADD local server url and herokuapp.com as allowed hosts
 ALLOWED_HOSTS = ['8000-graceyuguo-bookshelf-qiz2udug1ky.ws.codeinstitute-ide.net','.herokuapp.com']
+# Add CSRF TRUSTED ORIGINS
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net",
     "https://*.herokuapp.com"
@@ -43,6 +46,7 @@ CSRF_TRUSTED_ORIGINS = [
 # Add summernote app
 # Add contrib.sites
 # Add allauth allauth.account allauth.socialaccount
+# Add crispy_forms and crispy_bootstrap5
 
 INSTALLED_APPS = [
     'django.contrib.admin',
