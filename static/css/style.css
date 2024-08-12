@@ -24,6 +24,10 @@ h1{
     color:red;
 }
 
+#heroimage, #aboutpage{
+    width:100%;
+}
+
 #bookForm{
     width:50%;
     color:#21897e;

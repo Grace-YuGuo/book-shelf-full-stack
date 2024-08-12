@@ -29,7 +29,7 @@
 
 <body>
 
-    <img src="{% static 'images/default.webp' %}" alt="Hero Image" id="heroimage" height="280" width="100%">
+    <img src="{% static 'images/default.webp' %}" alt="Hero Image" id="heroimage" height="280">
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -75,8 +75,7 @@
                 </ul>
                 <!-- Form for search bar -->
                 <form method="get" action="{% url 'search' %}">
-                    <input type="text" name="query" placeholder="Title or author or category" value="{{ query }}"
-                        width="600px">
+                    <input type="text" name="query" placeholder="Title or author or category" value="{{ query }}">
                     <button type="submit" class="btn btn-outline-primary">Search</button>
                 </form>
             </div>

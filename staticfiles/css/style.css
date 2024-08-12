@@ -48,3 +48,7 @@ h1{
 .nav-link.active {
     color: red;
 }
+
+.faded{
+    color:rgb(171, 171, 171);
+}

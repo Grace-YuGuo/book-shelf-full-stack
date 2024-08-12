@@ -15,7 +15,7 @@
     {% endif %}
 
     <p> Category is: {{ book.category }}</p>
-    <p> Descriptioin is: {{ book.description | safe }}</p>
+    <p> Descriptioin is: {{ book.description | safe }}
     <p>Book record is added: {{ book.created_on }}</p>
 
 </div>
@@ -43,7 +43,7 @@
                     <div id="review{{ review.id }}">
                         {{ review.content | linebreaks }}
                     </div>
-                    <div id="rating{{ review.rating }}">
+                    <div class="rating{{ review.rating }}">
                         <p>Rating is: 
                             {% if review.rating == 1 %}
                                 <span>Poor</span>
