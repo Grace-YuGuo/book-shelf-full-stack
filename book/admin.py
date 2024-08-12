@@ -15,4 +15,11 @@ class BookAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
 # Register model of Category and Review into admin
 admin.site.register(Category)
-admin.site.register(Review)
+
+# Define a class inheritated from SummernoteModelAdmin to customise the book model filtering in admin
+@admin.register(Review)
+class ReviewAdmin(SummernoteModelAdmin):
+    """
+    This class defines the  filtering list  in admin for Review model.
+    """
+    list_filter = ('approved',)

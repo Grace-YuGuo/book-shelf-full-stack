@@ -8,11 +8,16 @@
 <div class="container">
     <!-- Book title ,category and added_on -->
     <h1>
-        Book title is : {{ book.title}}
+        Book title is : {{ book.title}}   
     </h1>
+    {% if not user.is_authenticated %}
+    <p class="bold"> Please register/log in to create reviews or any book you would recommend/share.</p>
+    {% endif %}
+
     <p> Category is: {{ book.category }}</p>
-    <p> {{ book.description | safe }}</p>
-    <p> Book record is added: {{ book.created_on }}</p>
+    <p> Descriptioin is: {{ book.description | safe }}</p>
+    <p>Book record is added: {{ book.created_on }}</p>
+
 </div>
 
 {% if user.is_authenticated %}
@@ -28,7 +33,7 @@
                 {% for review in reviews %}
                 <div class="p-2 reviews
           {% if not review.approved and review.user == user %}
-          text-bg-light{% elif not review.approved %} d-none{% endif %}">
+          faded{% elif not review.approved %} d-none{% endif %}">
                     <p class="font-weight-bold">
                         {{ review.user }}
                         <span class="">
@@ -54,7 +59,7 @@
                         </p>
                     </div>
                     {% if not review.approved and review.user == user %}
-                    <p class="">
+                    <p style="color:tomato">
                         This review is awaiting approval
                     </p>
                     {% endif %}
