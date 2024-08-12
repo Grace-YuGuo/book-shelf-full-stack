@@ -21,7 +21,7 @@ if os.path.isfile('env.py'):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # Templates directory
-TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -33,16 +33,19 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 # ADD local server url and herokuapp.com as allowed hosts
-ALLOWED_HOSTS = ['8000-graceyuguo-bookshelf-qiz2udug1ky.ws.codeinstitute-ide.net','.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-graceyuguo-bookshelf-qiz2udug1ky.ws.codeinstitute-ide.net',
+    '.herokuapp.com'
+]
 # Add CSRF TRUSTED ORIGINS
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net",
     "https://*.herokuapp.com"
 ]
 
-# Application definition 
+# Application definition
 # Add application of book
-# Add cloudinary application 
+# Add cloudinary application
 # Add summernote app
 # Add contrib.sites
 # Add allauth allauth.account allauth.socialaccount
@@ -68,15 +71,16 @@ INSTALLED_APPS = [
 ]
 
 # Enable Django handle multiple sites from one database.
-SITE_ID=1
-LOGIN_REDIRECT_URL ='/'
-LOGOUT_REDIRECT_URL ='/'
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
-# Add two crispy_form related constants:set bootstrap5 as the allowed template pack and as the default template pack for the project. 
-# This choice of default template pack is to match the Bootstrap5 CSS and JS files already used in the project base.html template.
+# Add two crispy_form related constants:set bootstrap5 as the
+# allowed template pack and as the default template pack for the project.
+# This choice of default template pack is to match the Bootstrap5 CSS
+# and JS files already used in the project base.html template.
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
-
 
 
 # Add whitenoise middleware
@@ -115,16 +119,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'book_shelf.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 # Connect postgreSql database by parsing the variable of DATABASES_URL
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -135,16 +129,25 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': (
+            'django.contrib.auth.password_validation.'
+            'UserAttributeSimilarityValidator'
+        ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': ('django.contrib.auth.password_validation.'
+                 'MinimumLengthValidator'
+                 ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': ('django.contrib.auth.password_validation.'
+                 'CommonPasswordValidator'
+                 ),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': ('django.contrib.auth.password_validation.'
+                 'NumericPasswordValidator'
+                 ),
     },
 ]
 
@@ -169,7 +172,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 # Static file URL
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
