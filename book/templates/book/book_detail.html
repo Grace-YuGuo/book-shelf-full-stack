@@ -64,7 +64,7 @@
                     </p>
                     {% endif %}
                     {% if user.is_authenticated and review.user == user %}
-                    <button class="btn btn-dark btn-edit" review_id="{{ review.id }}" review_rating_id ="{{ review.rating}}">Edit</button>
+                    <button class="btn btn-dark btn-edit" review_id="{{ review.id }}" data-review_rating_id ="{{ review.rating}}">Edit</button>
                     <button class="btn btn-danger btn-delete" review_id="{{ review.id }}">Delete</button>
                     {% endif %}
                 </div>

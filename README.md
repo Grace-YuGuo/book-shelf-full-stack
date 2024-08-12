@@ -174,8 +174,8 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 
 ## Validation
 ### HTML
-[W3 HTML Validator](https://validator.w3.org/) to check the HTML
-screenshot
+[W3 HTML Validator](https://validator.w3.org/) to check the HTML pages.
+Errors on summernote related html elements and attribute on edit/delete buttons attibutes.
 
 ### CSS
 [W3 CSS Validator](https://jigsaw.w3.org/css-validator/) to check the CSS

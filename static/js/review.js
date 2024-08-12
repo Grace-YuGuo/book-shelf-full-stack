@@ -22,7 +22,7 @@ const deleteConfirm = document.getElementById("deleteConfirm");
 for (let button of editButtons){
     button.addEventListener('click', (e)=>{
         let reviewId = e.target.getAttribute('review_id');
-        let reviewRatingId = e.target.getAttribute('review_rating_id')
+        let reviewRatingId = e.target.getAttribute('data-review_rating_id')
         let reviewContent = document.getElementById(`review${reviewId}`).innerText;
         reviewText.value = reviewContent;
         reviewRating.value = reviewRatingId;
