@@ -175,11 +175,15 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 ## Validation
 ### HTML
 [W3 HTML Validator](https://validator.w3.org/) to check the HTML pages.
-Errors on summernote related html elements and attribute on edit/delete buttons attibutes.
+Errors on image' width attribute fixed.
+Errors on input' width attribute fixed.
+Errors on review' edit&delete buttons invalid attribute fixed.
+Errors on additional tags fixed.
+There are no more errors apart from third party packages of summernotewidget related which are out of my control.
 
 ### CSS
-[W3 CSS Validator](https://jigsaw.w3.org/css-validator/) to check the CSS
-screenshot
+[W3 CSS Validator](https://jigsaw.w3.org/css-validator/) to check the CSS.
+No errors found.
 
 ### Python
 [CI Python Linter](https://pep8ci.herokuapp.com/) to check python scripts
