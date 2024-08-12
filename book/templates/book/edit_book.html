@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2">
-      <form id="bookForm" method="POST" style="width: 725px" enctype='multipart/form-data'>
+      <form id="bookForm" method="POST" style="width: 100%;" enctype='multipart/form-data'>
         {% csrf_token %}
         {{ form|crispy }}
         <div class="text-center">

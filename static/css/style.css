@@ -35,3 +35,14 @@ h1{
   color:antiquewhite;
   background-color: #3ba99c;
 }
+
+.nav-item{
+    font-size: 1.3rem;
+}
+
+
+.nav-item:active,
+.nav-item:hover{
+    color: #21897e;
+    text-decoration: underline;
+}
