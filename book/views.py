@@ -112,8 +112,10 @@ def edit_book(request, book_id):
     # Retrieve the specific book details to edit
     retrieved_book = get_object_or_404(Book, id=book_id)
 
-    if not request.user == retrieved_book.user and
-    not request.user.is_superuser:
+    if (
+     not request.user == retrieved_book.user
+     and not request.user.is_superuser
+    ):
         messages.error(request,
                        'You cannot update an article you did not create!')
         return redirect('home')
@@ -126,8 +128,8 @@ def edit_book(request, book_id):
             book.user = request.user
             book.approved = False
             book.save()
-            messages.success(request, 'Book updating submitted and
-                             awaiting approval')
+            messages.success(request,
+                             'Book updating submitted and awaiting approval')
             return redirect('home')
         else:
             messages.error(request, f"{f.errors}")
@@ -157,8 +159,10 @@ def delete_book(request, book_id):
     # Retrieve the specific book details to delete
     retrieved_book = get_object_or_404(Book, id=book_id)
 
-    if not request.user == retrieved_book.user and
-    not request.user.is_superuser:
+    if (
+        not request.user == retrieved_book.user
+        and not request.user.is_superuser
+    ):
         messages.error(request,
                        'You cannot delete an article you did not create!')
         return redirect('home')
@@ -280,8 +284,10 @@ def search(request):
 
     # Search by category of Fiction, Non_fiction,
     # Children's&Teenage or Science_fiction
-    if query == "Fiction" or query == "Non_fiction"
-    or query == "Children's&Teenage" or query == "Science_fiction":
+    if (
+        query == "Fiction" or query == "Non_fiction" or
+        query == "Children's&Teenage" or query == "Science_fiction"
+    ):
         results = Book.objects.filter(category=mappping_table[query])
 
     return render(request, 'book/index.html',
