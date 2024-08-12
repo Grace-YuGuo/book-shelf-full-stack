@@ -10,7 +10,7 @@
 [Link to the live site](https://book-shelf-e3665f129252.herokuapp.com/)
 
 ## Index – Table of Contents
-* [User Experience (UX)](#ser-experience-ux) 
+* [User Experience (UX)](#user-experience-ux) 
 * [Agile](#agile)
 * [Features](#features)
 * [Technologies Used](#technologies-used)
@@ -175,41 +175,118 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 ## Validation
 ### HTML
 [W3 HTML Validator](https://validator.w3.org/) to check the HTML pages.
-Errors on image' width attribute fixed.
-Errors on input' width attribute fixed.
-Errors on review' edit&delete buttons invalid attribute fixed.
-Errors on additional tags fixed.
-There are no more errors apart from third party packages of summernotewidget related which are out of my control.
+- Errors on image&input' width attribute fixed.
+- Errors on review edit&delete buttons' invalid attribute fixed.
+- Errors on additional tags fixed.
+- There are no more errors apart from third party package of summernotewidget related which are out of control.
 
 ### CSS
 [W3 CSS Validator](https://jigsaw.w3.org/css-validator/) to check the CSS.
-No errors found.
+- No errors found.
 
 ### Python
 [CI Python Linter](https://pep8ci.herokuapp.com/) to check python scripts
-screenshot
+- Errors found are all fixed.
 
 ## Manual test
 ### Home page
-Test Result
+| TestCase Title | Preconditions | Pass/Fail |
+|----------|----------|----------|
+| List of books visibility | View as guest or logged-in user | Pass |
+| Notification on the login status | View as guest or logged-in user | Pass |
+| Update/Edit book button visibility only for the user who added the book| Logged-in user who has added own books | Pass |
+| Update/Edit book button not visible for the guest or user who is not the owner of the book | View as guest or logged-in user but not the user who created the book record |Pass |
+| Click the update button below the book, navigate to update book page| Logged-in user who has added the book | Pass |
+| Click the delete button below the book, navigate to the delete book page | Logged-in user who has added the book| Pass |
+| Click book title, navigate to specific book' detail page | View as guest or logged-in user | Pass |
+| Click NEXT or PREV at the bottom of list of books, navigate to next or previous page | View as guest or logged-in user | Pass |
 
 ### About page
-Test Result
+| TestCase Title | Preconditions | Pass/Fail |
+|----------|----------|----------|
+| At about page it shows the brief instruction of the site in proper layout | View as guest or logged-in user | Pass|
 
 ### Footer/NAVBar
-Test Result
+| TestCase Title | Preconditions | Pass/Fail |
+|----------|----------|----------|
+| Navigation to 'home' page,'about' page,'register' page or 'login' page | View as guest | Pass |
+| Navigation to 'home' page,'about' page,'add a book' page or 'logout' page | Logged-in user | Pass |
+| Navigation to the social media page by click respective link on the footer,'facebook' 'twitter' 'github' 'linkedin'| View as guest or logged in user| Pass |
+| Navigation to 'home' page after click the logo 'book_shelf' | View as guest or logged in user | Pass |
 
 ### Login/logout/registration page
-Test Result
+| TestCase Title | Preconditions | Pass/Fail |
+|----------|----------|----------|
+| Register a new user on register page | Input valid username/email/password, click Signup button| Pass |
+| Notification message to inform if registered succesfully  | Input valid username/email/password, click Signup button |Pass|
+| Notification if invalid password| Input invalid password, click Signup button | Pass|
+| Log in via valid username and password| Valid username and password to sign in, click Signin button| Pass|
+| Notification message to inform if logged-in succesfully | Valid username and password to sign in, click Signin button | Pass |
+| Loggin status changed to as logged-in as 'username' after signing in successfully | Valid username and password to sign in, click Signin button| Pass |
+| On log out page, ask confirmation for double checking| Logged in user, click Log Out in navbar| Pass |
+| Sign out as logged in user | Logged in user, click Sign Out on logout page | Pass |
+| Notification message to inform if logged-out succesfully | Logged in user, click Sign Out on logout page| Pass |
+| Loggin status changed to as 'You are not logged in' after signing out successfully | Logged in user, click Sign Out on logout page | Pass |
 
-### Review CRUD
-Test Result
+### Book create/edit/delete
+| TestCase Title | Preconditions | Pass/Fail |
+|----------|----------|----------|
+| At add a book page, create a new book record by filling in the book form| Logged-in user, click 'create' below the book form| Pass|
+| Notification message to inform if adding a book successfully| Logged-in user, click 'create' below the book form| Pass |
+| At edit a book page, the book form pre-filled with specific book information| Logged-in user who created the book record, click 'update' button below the book title in home page| Pass |
+| At edit a book page, edit a book record by editting the book form| Logged-in user who created the book record, click 'update' below the book form| Pass |
+| Notification message to inform if editing a book successfully | Logged-in user who created the book record, click 'update' below the book form| Pass |
+| At delete a book page, confrimation question presented | Logged-in user who created the book record, click 'delete' button below the book title in home page | Pass |
+| At delete a book page, delete a book record after confirmation | Logged-in user who created the book record, click ' Confirm delete' below the confirm question | Pass |
+| Notification message to inform if deleting a book successfully| Logged-in user who created the book record, click ' Confirm delete' below the confirm question | Pass |
+| At delete a book page, revert back to home page if decide not to delete| Logged-in user who created the book record, click ' Take me home' below the confirm question| Pass |
+| Not able to add a book | Guest is not shown the 'add a user' in navbar | Pass |
+| Not able to add a book after logging out| Copy the 'add a book' url after logging out, it turns to signin page to re-sign in for access  | Pass |
+| Not able to edit a book| Guest or the user who is not the book record creator has no visibility of update button | Pass |
+| Not able to edit a book  after logging out | Copy the 'edit a book' url after logging out, it turns to signin page to re-sign in for access  | Pass |
+| Not able to delete a book| Guest or the user who is not the book record creator has no visibility of delete button | Pass |
+| Not able to delete a book  after logging out| Copy the 'delete a book' url after logging out, it turns to signin page to re-sign in for access | Pass |
 
-### Book CRUD
-Test Result
+### Review create/read/edit/delete
+| TestCase Title | Preconditions | Pass/Fail |
+|----------|----------|----------|
+| At the book detail page, view the comment to the book | Logged-in user | Pass |
+| At the book detail page, view the comment count to the book | Logged-in user | Pass |
+| At the book detail page, not able to view the comment to the book | Guest | Pass |
+| At the book detail page, add the comment to the book | Logged-in user | Pass |
+| Notification message to inform if adding a review successfully| Logged-in user, click 'Submit' below the review form| Pass |
+| At the book detail page, edit the comment to the book| Logged-in user who created the comment to the book, click the edit below the comment | Pass |
+| At the book detail page, edit the comment to the book, review form pre-filled with the specific information| Logged-in user who created the comment to the book, click the edit below the comment | Pass |
+| Notification message to inform if editting a review successfully| Logged-in user, click 'Update' below the review form| Pass |
+| At the book detail page, delete the comment to the book | Logged-in user who created the comment to the book, click the delete below the comment| Pass |
+| At the book detail page, confirmation question modal to confirm to delete the comment to the book  | Logged-in user who created the comment to the book, click the delete below the comment| Pass |
+| Notification message to inform if delete a review successfully| Logged-in user, click 'Delete' for the confirmation question | Pass |
+| Not able to add a review | Guest is not shown the 'comment' in book detail page | Pass |
+| Not able to add a review after logging out| Copy the 'create a review' url after logging out, it turns to signin page to re-sign in for access  | Pass |
+| Not able to edit a review| Guest or the user who is not the review record creator has no visibility of update button below the comment| Pass |
+| Not able to edit a review  after logging out | Copy the 'edit a review' url after logging out, it turns to signin page to re-sign in for access  | Pass |
+| Not able to delete a review| Guest or the user who is not the review record creator has no visibility of delete button below the comment | Pass |
+| Not able to delete a review  after logging out| Copy the 'delete a review' url after logging out, it turns to signin page to re-sign in for access | Pass |
 
 ### Search a book
-Test Result
+| TestCase Title | Preconditions | Pass/Fail |
+|----------|----------|----------|
+| Search a book by book title keywords show results or not found| Input book title key words and click 'search' | Pass |
+| Search a book by book author keywords show results or not found| Input book author key words and click 'search' |  Pass |
+| Search a book by book title keywords show results or not found| Input book title key words capital or small leter or mixed, and click 'search' | Pass |
+| Search a book by book author keywords show results or not found| Input book author key words capital or small leter or mixed, and click 'search'  |Pass |
+| Search a book by book catogery show results or not found| Input book category 'Fiction' 'Non_fiction' 'Science_fiction' or 'Children's&Teenage, and click 'search' | Pass |
+
+### Responsiveness
+| TestCase Title | Preconditions | Pass/Fail |
+|----------|----------|----------|
+| Homepage responsiveness| At home page, change to mobile screen size or laptop screensize | Pass |
+| Aboutpage responsiveness| At about page change to mobile screen size or laptop screensize | Pass |
+| Signin page responsiveness| At signin page change to mobile screen size or laptop screensize | Pass |
+| Register page responsiveness| At register page change to mobile screen size or laptop screensize | Pass |
+| Logout page responsiveness| At logout page change to mobile screen size or laptop screensize | Pass |
+| Add/edit a book page responsiveness| At add/edit a book page change to mobile screen size or laptop screensize | Pass(Partially pass, the third party package of summernotewidget' width is not responsive which is out of control)
+| Add/edit/delete review page responsiveness| At add/edit/delete a review page change to mobile screen size or laptop screensize | Pass |
 
 [Back to Top](#top)
 
@@ -294,12 +371,12 @@ Creating a clone enables you to make a local copy of the repository. Steps are a
 # Credits
 ## Images 
 - Background image and book featured images for the mock content were taken from free stock photos on [Pexels](https://www.pexels.com/)
-- Image format conversion done via [freeconvernt](https://www.freeconvert.com/png-to-webp)
+- Image format conversion implemented via [freeconvernt](https://www.freeconvert.com/png-to-webp)
  
 
 ## Code
-- Code Institute course content for providing the knowledge and guidance to build the project
-- GitHub user katiejanecoughlan and Gordon-Meade for sharing a best practice README structure
+- Code Institute course content for providing the knowledge and guidance to build the project.
+- GitHub user katiejanecoughlan and Gordon-Meade for sharing README structure.
 - Course Facilitator Alexander and David Calikes continued support and guidelines.
 - Tutor Kevin, Spencers and Martin's subject matter sessions and coding sessions.
 - Fellow cohort peers support and knowledge sharing during the course learning journey.
