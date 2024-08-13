@@ -23,19 +23,58 @@
 
 ![Datastructure Mockup](documentation/screenshots/Screenshot2_datamodel.webp)
 
-- After project purpose decided, lucichart is used to implement and plan the database structure.
+- After project purpose decided, [lucichart](https://lucid.app/documents#/) is utilized to plan the database structure.
 - The above diagram is serving as an guide to indicate the field types and relationships between data stored in database.
 
 ## Data models
 
 - User model
- - -  Django pre-defined class-based model. Username and password implemented to login.
+  - 
+    - Django pre-defined model
+  
+  |    | Field name    | Field type |
+  |----|---------------|------------|
+  | PK | user_ID       |            |
+  |    | user_name     | CharField  |
+  |    | user_password | CharField  |
+
 - Book model
- - - | title | CharField | | pages | integerField | | author | CharField | | description | TextField | | created_on | DateTimeField | | approval | BooleanField | | category | ForeignKey | | updated_on | DateTimeField | | image | CloudinaryField || user | ForeignKey |
+  - 
+  |    | Field name   | Field type      |
+  |----|--------------|-----------------|
+  | PK | book_ID      |                 |
+  |    | title        | Char(200)       |
+  |    | image        | CloudinaryField |
+  |    | auther       | Char(200)       |
+  |    | descriptioin | TextField       |
+  |    | pages        | IntegerField    |
+  | FK | category     |                 |
+  | FK | user         |                 |
+  |    | created_on   | DateTimeField   |
+  |    | updated_on   | DateTimeField   |
+  |    | approved     | BooleanField    |
+
 - Review model
- - - | book | ForeignKey | | user | ForeignKey | | content | TextField | | created_on | DateTimeField | | approval | BooleanField |
+  - 
+  |    | Field name | Field type    |
+  |----|------------|---------------|
+  | PK | review_ID  |               |
+  | FK | book_ID    |               |
+  | FK | user_ID    |               |
+  |    | content    | TextFiled     |
+  |    | created_on | DateTimeField |
+  |    | approved   | BooleanField  |
+
 - Category model
- - -  | book | ForeignKey | | name | CharField |
+  - 
+  |    | Field name  | Field type |
+  |----|-------------|------------|
+  | PK | category_ID |            |
+  | FK | book_ID     |            |
+  |    | name        | CharField  |
+
+  
+
 
 [Back to Top](#top)
 
@@ -44,7 +83,7 @@
 
 ## Overview
 
-The UX design focuses on creating an engaging and welcoming environment. After signup and logging in, the site user would be able to add a new book they would like to share with other users and add a review to any books. They can search book by book name key words, book author key words or book 4 categories(Fiction,Non_fiction,Science_fiction and Children'S&Teenage).
+The UX design focuses on creating an engaging and welcoming environment. After signup and logging in, the site user would be able to add a new book they would like to share with other users and add a review to any books,sharing thoughts. They can search book by book name key words, book author key words or book 4 categories(Fiction,Non_fiction,Science_fiction and Children'S&Teenage).
 
 ## Site User
 The primary users of book_shelf are anyone who would like to share or recommend books based on their reading experiences and preferences. It aims to provide a supportive and inclusive community where the site users can share their feelings about books and recommend books to other like-minded readers. They value authenticity, empathy, and the opportunity to engage with like-minded individuals in a safe and welcoming space.
@@ -54,23 +93,23 @@ The primary users of book_shelf are anyone who would like to share or recommend 
 
 ## Wireframes created in Balsamic
 - Home Page for mobile screen
-  - ![Datastructure Mockup](documentation/wireframes/wireframe_homepage_mobilescreen.webp)
+   - ![Datastructure Mockup](documentation/wireframes/wireframe_homepage_mobilescreen.webp)
 
 - Home Page for pad/laptop screen
-  - ![Datastructure Mockup](documentation/wireframes/wireframe_homepage_padlaptopscreen.webp)
+   - ![Datastructure Mockup](documentation/wireframes/wireframe_homepage_padlaptopscreen.webp)
 
 - About Page
-  - ![Datastructure Mockup](documentation/wireframes/wireframe_aboutpage.webp)
+   - ![Datastructure Mockup](documentation/wireframes/wireframe_aboutpage.webp)
 
 - Book detail page for logged in user
-  - ![Datastructure Mockup](documentation/wireframes/wireframe_bookdetail_loggedin.webp)
+   - ![Datastructure Mockup](documentation/wireframes/wireframe_bookdetail_loggedin.webp)
 
 - Add a book page for logged in user
-  - ![Datastructure Mockup](documentation/wireframes/wireframe_addbook_loggedin.webp)
+   - ![Datastructure Mockup](documentation/wireframes/wireframe_addbook_loggedin.webp)
 
 ### Colour schemes
 The colour schemes generated from [cooler](https://coolors.co/c9daea-03f7eb-00b295-191516-ab2346) as below:
-![Colourscheme Mockup](documentation/colour-palette/color_scheme.webp)
+![Colourscheme Mockup](documentation/screenshots/color_scheme.webp)
 
 ### Font
 [Googlefont](https://fonts.google.com/) of Lato used.
@@ -82,24 +121,22 @@ The colour schemes generated from [cooler](https://coolors.co/c9daea-03f7eb-00b2
 
 ## Agile development
 
-In the development life-cycle of book_shelf, Agile methodology was used to ensure iterative and efficient progress throughout the project development. Central to this approach was the utilization of a Kanban board hosted on GitHub Projects. You can view the project board as: [KANBAN Board](https://github.com/users/Grace-YuGuo/projects/6).
+In the app of book_shelf development life-cycle, Agile methodology was used to ensure iterative and efficient progress throughout the project development. Central to this approach was the utilization of a Kanban board hosted on GitHub Projects. You can view the project board as: [KANBAN Board](https://github.com/users/Grace-YuGuo/projects/6).
 
  -![Kanban Mockup](documentation/screenshots/Kanban_board.webp)
 
 ### Kanban overview
-The Kanban board served as a visual representation of the project's progress and allowed for effective task management. It consisted of the following sections:
+The Kanban board served as a visual representation of the project's progress and allowed for effective task management,enhanced visibility,increased efficiency,to assess and improve the flow of work. It consisted of the following sections:
 
 - Todo: This section contained all the tasks and user stories that were yet to be prioritized for implementation.
 - In Progress: Work in progress was tracked here, indicating tasks actively being worked on.
 - Done: Tasks that were completed successfully were moved to this column.
 
 ### User Stories Integration
-User stories played a pivotal role in shaping the development process, ensuring that features were aligned with user needs. These user stories were mapped onto the Kanban board, guiding the prioritization and implementation of tasks.
+User stories played a pivotal role in shaping the development process, ensuring that features were aligned with user needs.User storires integration into Kanban board is an effective way to manage and prioritize tasks while ensuring that project progress remains aligned with the goals and needs of users.  These user stories were mapped onto the Kanban board, guiding the prioritization and implementation of tasks, enhanced focusing on usr needs, better visibility and tracking, and increased flexibility.
 
 ### Task Management
-In addition to tracking user stories, the Kanban board served as a comprehensive task list. Tasks utilized as breaking down user stories into smaller, actionable units, ensuring clear and manageable objectives for development. This specific approach facilitated efficient progress tracking.
-
-By leveraging Agile principles and utilizing the Kanban board effectively, the development of book_shelf remained focused, adaptable, and responsive to evolving requirements, resulting in a more robust and user-centric Django application.
+In addition to tracking user stories, the Kanban board served as a comprehensive task list. User stories were breaking into smaller, actionable units of tasks, ensuring clear and manageable objectives for development. This specific approach facilitated efficient progress tracking.By leveraging Agile principles and utilizing the Kanban board effectively, the development of book_shelf remained focused, adaptable, and responsive to evolving requirements, resulting in a more robust and user-centric Django application.
 
 ## User Stories Overview
 ### List of User Stories
@@ -133,22 +170,30 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 
 ## Features implemented
 
-- Full CRUD on review of a book: the logged-in site user can create, read, edit and delete their review on a book
-- Full CRUD on a book: the logged-in site user can create,read,edit and delete their book
-- Search a book via key words in book title or book author or 4 categories(Fiction,Non_fiction,Science_fiction and Children's&Teenage books)
-- The site admin maintain the submitted books and reviews of specific books.
+- Create/read/edit/delete a review to book:
+   - The logged-in site user can read the reviews to a book
+   - The logged-in site user can add reviews to a book and edit/delete the review they created
 
-- ![book Mockup](documentation/screenshots/book_add.webp)
-- ![book_rud Mockup](documentation/screenshots/book_rud.webp)
-- ![review_crud](documentation/screenshots/reviews_crud.webp)
-- ![search](documentation/screenshots/search.webp)
+- Create/read/edit/delete a book: 
+   - The guest user can read the list of books
+   - The logged-in site user can read the list of books
+   - The logged-in site user can add books and edit/delete the book they created
+
+- Search a book via key words in book title or key words in book author or 4 categories(Fiction,Non_fiction,Science_fiction and Children's&Teenage)
+- The site admin maintain the submitted books and reviews to books
+
+  - ![book read](documentation/screenshots/Screenshot.read.webp)
+  - ![book Mockup](documentation/screenshots/book_add.webp)
+  - ![book_rud Mockup](documentation/screenshots/book_rud.webp)
+  - ![review_crud](documentation/screenshots/reviews_crud.webp)
+  - ![search](documentation/screenshots/search.webp)
 
 ### Navbar and Footer:
-- Unified Navbar and footer on every page
-- Navbar's changes as signing in status,logged in user can see add a book tab
-- Footer includes social links and github links
+- Unified navbar and footer on every page
+- Navbar' content changes as signing in status,logged in user can see add a book navitem
+- Footer includes social links and github link
 
-### Index page:
+### Home page:
 - The homepage provides the list of books
 - It can be accessed without signing in
 
@@ -161,12 +206,12 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 
 ## Future features
 - Log in via social account
-    - At the home page, the site user can select the logging in approach via social medai account.
-    - The user can select via facebook, twitter, or instgram account to log in and log in successfully with approriate incredientials.
+    - At the home page, the site user can log in via social media account.
+    - The user can select via facebook, twitter, or instgram account to log in the site and log in successfully with approriate incredientials.
 - Profile page
-    - Given a logged-in site user, view the summary list of books and reviews user submitted in a seperate page.
+    - Given a logged-in site user, view the summary list of books and reviews they submitted in a seperate site page.
     - Given a logged-in site user, view the status of the books and reviews user submitted.
-    - Given a logged-in site user, user can check and update their name and password.
+    - Given a logged-in site user, they can check and update their name and password or profile information.
 
 [Back to Top](#top)
 
@@ -186,7 +231,10 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 
 ### Python
 [CI Python Linter](https://pep8ci.herokuapp.com/) to check python scripts
-- Errors found are all fixed.
+- Errors found on spaces fixed.
+- Errors found on too long lines fixed.
+- Errors found on other format issues(lines, indention)fixed.
+- No more errors
 
 ## Manual test
 ### Home page
@@ -201,10 +249,15 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 | Click book title, navigate to specific book' detail page | View as guest or logged-in user | Pass |
 | Click NEXT or PREV at the bottom of list of books, navigate to next or previous page | View as guest or logged-in user | Pass |
 
+  - ![homepage](documentation/screenshots/Screenshot_homepage1.png)
+  - ![homepage](documentation/screenshots/Screenshot%202024-08-13%20134149.png)
+
 ### About page
 | TestCase Title | Preconditions | Pass/Fail |
 |----------|----------|----------|
 | At about page it shows the brief instruction of the site in proper layout | View as guest or logged-in user | Pass|
+
+  - ![aboutpage](documentation/screenshots/testaboutpage.png)
 
 ### Footer/NAVBar
 | TestCase Title | Preconditions | Pass/Fail |
@@ -213,6 +266,10 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 | Navigation to 'home' page,'about' page,'add a book' page or 'logout' page | Logged-in user | Pass |
 | Navigation to the social media page by click respective link on the footer,'facebook' 'twitter' 'github' 'linkedin'| View as guest or logged in user| Pass |
 | Navigation to 'home' page after click the logo 'book_shelf' | View as guest or logged in user | Pass |
+ 
+ - ![navbar](documentation/screenshots/Screenshot_loginstatus.png)
+ - ![navbar](documentation/screenshots/Screenshot_notloginstatus.png)
+ - ![footer](documentation/screenshots/Screenshot_footer.webp)
 
 ### Login/logout/registration page
 | TestCase Title | Preconditions | Pass/Fail |
@@ -228,6 +285,12 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 | Notification message to inform if logged-out succesfully | Logged in user, click Sign Out on logout page| Pass |
 | Loggin status changed to as 'You are not logged in' after signing out successfully | Logged in user, click Sign Out on logout page | Pass |
 
+ - ![signin](documentation/screenshots/Screenshot_signin.png)
+ - ![signin2](documentation/screenshots/ScreenshotnotifyLogin.webp)
+ - ![register](documentation/screenshots/Screenshot_register.webp)
+ - ![signout](documentation/screenshots/Screenshotsignoutconfirm.webp)
+ - ![signout2](documentation/screenshots/signoutnotify.webp)
+
 ### Book create/edit/delete
 | TestCase Title | Preconditions | Pass/Fail |
 |----------|----------|----------|
@@ -240,12 +303,12 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 | At delete a book page, delete a book record after confirmation | Logged-in user who created the book record, click ' Confirm delete' below the confirm question | Pass |
 | Notification message to inform if deleting a book successfully| Logged-in user who created the book record, click ' Confirm delete' below the confirm question | Pass |
 | At delete a book page, revert back to home page if decide not to delete| Logged-in user who created the book record, click ' Take me home' below the confirm question| Pass |
-| Not able to add a book | Guest is not shown the 'add a user' in navbar | Pass |
-| Not able to add a book after logging out| Copy the 'add a book' url after logging out, it turns to signin page to re-sign in for access  | Pass |
-| Not able to edit a book| Guest or the user who is not the book record creator has no visibility of update button | Pass |
-| Not able to edit a book  after logging out | Copy the 'edit a book' url after logging out, it turns to signin page to re-sign in for access  | Pass |
-| Not able to delete a book| Guest or the user who is not the book record creator has no visibility of delete button | Pass |
-| Not able to delete a book  after logging out| Copy the 'delete a book' url after logging out, it turns to signin page to re-sign in for access | Pass |
+
+  - ![bookadd](documentation/screenshots/addabook.webp)
+  - ![bookupdate](documentation/screenshots/editabook.webp)
+  - ![bookupdate2](documentation/screenshots/updateabooknotify.webp)
+  - ![bookdelete](documentation/screenshots/deleteabookconfirm.webp)
+
 
 ### Review create/read/edit/delete
 | TestCase Title | Preconditions | Pass/Fail |
@@ -261,12 +324,29 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 | At the book detail page, delete the comment to the book | Logged-in user who created the comment to the book, click the delete below the comment| Pass |
 | At the book detail page, confirmation question modal to confirm to delete the comment to the book  | Logged-in user who created the comment to the book, click the delete below the comment| Pass |
 | Notification message to inform if delete a review successfully| Logged-in user, click 'Delete' for the confirmation question | Pass |
+
+  - ![review](documentation/screenshots/readreview.webp)
+  - ![editreview](documentation/screenshots/reviewupdatenotify.webp)
+  - ![deletereview](documentation/screenshots/deletereviewconfirm.webp)
+
+### Security
+| TestCase Title | Preconditions | Pass/Fail |
+|----------|----------|----------|
+| Not able to add a book | Guest is not shown the 'add a user' in navbar | Pass |
+| Not able to add a book after logging out| Copy the 'add a book' url after logging out, it turns to signin page to re-sign in for access  | Pass |
+| Not able to edit a book| Guest or the user who is not the book record creator has no visibility of update button | Pass |
+| Not able to edit a book  after logging out | Copy the 'edit a book' url after logging out, it turns to signin page to re-sign in for access  | Pass |
+| Not able to delete a book| Guest or the user who is not the book record creator has no visibility of delete button | Pass |
+| Not able to delete a book  after logging out| Copy the 'delete a book' url after logging out, it turns to signin page to re-sign in for access | Pass |
 | Not able to add a review | Guest is not shown the 'comment' in book detail page | Pass |
 | Not able to add a review after logging out| Copy the 'create a review' url after logging out, it turns to signin page to re-sign in for access  | Pass |
 | Not able to edit a review| Guest or the user who is not the review record creator has no visibility of update button below the comment| Pass |
 | Not able to edit a review  after logging out | Copy the 'edit a review' url after logging out, it turns to signin page to re-sign in for access  | Pass |
 | Not able to delete a review| Guest or the user who is not the review record creator has no visibility of delete button below the comment | Pass |
 | Not able to delete a review  after logging out| Copy the 'delete a review' url after logging out, it turns to signin page to re-sign in for access | Pass |
+
+  - ![security](documentation/screenshots/securtyloggedout1.webp)
+  - ![security2](documentation/screenshots/securityloggedout2.webp)
 
 ### Search a book
 | TestCase Title | Preconditions | Pass/Fail |
@@ -276,6 +356,10 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 | Search a book by book title keywords show results or not found| Input book title key words capital or small leter or mixed, and click 'search' | Pass |
 | Search a book by book author keywords show results or not found| Input book author key words capital or small leter or mixed, and click 'search'  |Pass |
 | Search a book by book catogery show results or not found| Input book category 'Fiction' 'Non_fiction' 'Science_fiction' or 'Children's&Teenage, and click 'search' | Pass |
+
+  - ![search1](documentation/screenshots/search1.webp)
+  - ![search2](documentation/screenshots/search2.webp)
+  - ![search3](documentation/screenshots/search3.webp)
 
 ### Responsiveness
 | TestCase Title | Preconditions | Pass/Fail |
@@ -287,6 +371,11 @@ By leveraging Agile principles and utilizing the Kanban board effectively, the d
 | Logout page responsiveness| At logout page change to mobile screen size or laptop screensize | Pass |
 | Add/edit a book page responsiveness| At add/edit a book page change to mobile screen size or laptop screensize | Pass(Partially pass, the third party package of summernotewidget' width is not responsive which is out of control)
 | Add/edit/delete review page responsiveness| At add/edit/delete a review page change to mobile screen size or laptop screensize | Pass |
+
+
+## Bugs
+Warnings on console when loading the cloudinary images url as below:
+- ![warning](documentation/screenshots/Screenshot_warning.webp)
 
 [Back to Top](#top)
 
@@ -321,34 +410,31 @@ The technologies implemented in this application included HTML5, CSS, Bootstrap,
 
 ## Deployment Guide
 ### Deployment Steps:
-- Creating the Heroku App account
-- In the Heroku Dashboard, click on 'New' and then select 'Create New App'.
-- Create a unique name for your project.
-- Select the closest region in this case is EURO Region
-- Click on "Create App".
+- Creating the Heroku App account and log in
+- Enable two-factor Authentication select via authenticator app(Install 'authenticator' application) approach. 
+- In the Heroku Dashboard, click on 'New' and then select 'Create New App'
+- Create a unique name for your project and select the closest region in this case is EURO Region and click on "Create App".
 - In the "Deploy" tab, choose GitHub as the deployment method.
 - Connect your GitHub account and find/connect your GitHub repository.
 
 ### Setting Up Environment Variables
-- Add Heroku to the ALLOWED_HOSTS list.
+- Add Heroku to the ALLOWED_HOSTS list and CSRF_TRUSTED_ORIGINS list.
 - Configure static files and templates directories in settings.py.
-- Migrate the models to the new database connection in the terminal.
-- Create env.py in the top level of the Django app.
-- Import os in env.py.
-- Set up necessary environment variables in env.py, including the secret key and database URL.
-- Update settings.py to use environment variables for secret key and database.
+- Run 'python3 manage.py collectstatic' command in terminal
+- Create env.py in the top level of the Django app and import os in env.py.
+- Set up necessary environment variables in env.py, including the secret key, database URL and cloudinary URL.
+- Update settings.py to use environment variables for secret key, database URL, cloudinary URL and DEBUG value.
 - Configure environment variables in the Heroku "Settings" tab under "Config Vars".
 
-### Creating Procfile and Pushing Changes
+### Creating Procfile
 - Create a Procfile in the top level directory.
 - Add the command to run the project in the Procfile.
-- Add, commit, and push the changes to GitHub.
 
 ### Heroku Deployment
 - In Heroku, navigate to the Deployment tab and deploy the branch manually.
-- Monitor the build logs for any errors.
-- Upon successful deployment, Heroku will display a link to the live site.
-- Make sure to resolve any deployment errors by adjusting the code as necessary.
+- Monitor the build logs details for any error or click the 'View log' at the top of application page.
+- Upon successful deployment, Heroku will display a link to the live site at the bottom or click 'Open App' at the top of application page.
+- Make sure to resolve any deployment errors by adjusting the code and system variables' settings if necessary.
 
 ### Forking the Repository
 Forking the GitHub Repository allows you to create a copy of the original repository without affecting it. Steps are as below:
@@ -376,9 +462,9 @@ Creating a clone enables you to make a local copy of the repository. Steps are a
 
 ## Code
 - Code Institute course content for providing the knowledge and guidance to build the project.
+- Course Facilitator Alexander Tastad and David Calikes continued support and guidance.
+- Tutor Kevin Loughrey, Spence, Martin' subject matter sessions and coding sessions.
 - GitHub user katiejanecoughlan and Gordon-Meade for sharing README structure.
-- Course Facilitator Alexander and David Calikes continued support and guidelines.
-- Tutor Kevin, Spencers and Martin's subject matter sessions and coding sessions.
 - Fellow cohort peers support and knowledge sharing during the course learning journey.
 
 [Back to Top](#top)
