@@ -131,6 +131,7 @@ The Kanban board served as a visual representation of the project's progress and
 - Todo: This section contained all the tasks and user stories that were yet to be prioritized for implementation.
 - In Progress: Work in progress was tracked here, indicating tasks actively being worked on.
 - Done: Tasks that were completed successfully were moved to this column.
+- Future features: Tasks to be implemented in the future.
 
 ### User Stories Integration
 User stories played a pivotal role in shaping the development process, ensuring that features were aligned with user needs.User storires integration into Kanban board is an effective way to manage and prioritize tasks while ensuring that project progress remains aligned with the goals and needs of users.  These user stories were mapped onto the Kanban board, guiding the prioritization and implementation of tasks, enhanced focusing on usr needs, better visibility and tracking, and increased flexibility.
