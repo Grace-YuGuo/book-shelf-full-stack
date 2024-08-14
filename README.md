@@ -373,9 +373,14 @@ In addition to tracking user stories, the Kanban board served as a comprehensive
 | Add/edit/delete review page responsiveness| At add/edit/delete a review page change to mobile screen size or laptop screensize | Pass |
 
 
-## Bugs
-Warnings on console when loading the cloudinary images url as below:
-- ![warning](documentation/screenshots/Screenshot_warning.webp)
+## Bugs to fix
+### 1. Warnings on console when loading the cloudinary images url as below:
+ ![warning](documentation/screenshots/Screenshot_warning.webp)
+
+
+### 2. Uploading an image into CloudinaryField when add a new book, the uploaded image information is not shown in admin panel, just placeholder image instead.
+ ![warning](documentation/screenshots/Screenshot%20bug2.png)
+
 
 [Back to Top](#top)
 
