@@ -375,13 +375,17 @@ In addition to tracking user stories, the Kanban board served as a comprehensive
 
 ## Bugs fixed and to fix
 
-### Fixed bug: Uploading an image into CloudinaryField when add a new book, the uploaded image information is not shown in admin panel, just placeholder image instead.It 
-### is fixed by amending create_book function in view.py file by changing statement to : form = BookForm(request.POST,request.FILES) rather than form = BookForm(request.POST).
+### Fixed bug: 
+- Uploading an image into CloudinaryField when add a new book, the uploaded image information is not shown in admin panel, just placeholder image instead.It 
+  is fixed by amending create_book function in view.py file by changing statement to : form = BookForm(request.POST,request.FILES) rather than form = BookForm(request.POST).
+ 
  ![warning](documentation/screenshots/Screenshot%20bug2.png)
  
 
 
-### Bug to fix:  Warnings on console when loading the cloudinary images url as below, it also impacts the lighthouse report' Best Practices score.
+### Bug to fix:  
+- Warnings on console when loading the cloudinary images url as below, it also impacts the lighthouse report' Best Practices score.
+
  ![warning](documentation/screenshots/Screenshot_warning.webp)
 
  ![lighthouse](documentation/screenshots/Screenshot%202024-08-14%20122627.png)
