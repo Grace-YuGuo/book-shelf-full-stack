@@ -99,12 +99,12 @@
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="book-link"> &laquo PREV </a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="book-link"> &laquo PREV ..</a></li>
             {% else %}
             
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="book-link"> NEXT &raquo; </a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}" class="book-link"> .. NEXT &raquo; </a></li>
             {% else %}
     
             {% endif %}
