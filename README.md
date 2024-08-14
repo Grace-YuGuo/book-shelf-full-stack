@@ -372,6 +372,11 @@ In addition to tracking user stories, the Kanban board served as a comprehensive
 | Add/edit a book page responsiveness| At add/edit a book page change to mobile screen size or laptop screensize | Pass(Partially pass, the third party package of summernotewidget' width is not responsive which is out of control)
 | Add/edit/delete review page responsiveness| At add/edit/delete a review page change to mobile screen size or laptop screensize | Pass |
 
+### Lighthouse report
+
+- There are some improvements to implement based on Lighthouse report related to performance, accessibility, best practices, and SEO. For example: properly size images, avoid large layout shifts.
+
+![lighthouse](documentation/screenshots/lighthouse.webp)
 
 ## Bugs fixed and to fix
 
@@ -383,12 +388,10 @@ In addition to tracking user stories, the Kanban board served as a comprehensive
  
 
 
-### Bug to fix:  
+### Warnings: 
 - Warnings on console when loading the cloudinary images url as below, it also impacts the lighthouse report' Best Practices score.
 
  ![warning](documentation/screenshots/Screenshot_warning.webp)
-
- ![lighthouse](documentation/screenshots/Screenshot%202024-08-14%20122627.png)
 
 [Back to Top](#top)
 
