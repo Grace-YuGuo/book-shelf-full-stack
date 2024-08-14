@@ -76,7 +76,7 @@ def create_book(request):
     """
     # Save submitted book and send messages after submission
     if request.method == 'POST':
-        form = BookForm(request.POST)
+        form = BookForm(request.POST,request.FILES)
         if form.is_valid():
             book = form.save(commit=False)
             book.user = request.user
