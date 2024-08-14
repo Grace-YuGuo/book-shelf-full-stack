@@ -17,7 +17,7 @@ class BookList(generic.ListView):
     """
     queryset = Book.objects.filter(approved=1)
     template_name = "book/index.html"
-    paginate_by = 6
+    paginate_by = 3
 
 
 # Set up a view to show the book detail
