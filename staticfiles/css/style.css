@@ -2,6 +2,7 @@ html,body{
     height:100%;
 }
 
+/* Apply 'Lato' font */
 body {
     font-family: 'Lato', 'serif';
 }
@@ -14,20 +15,19 @@ main{
 footer{
     flex-shrink:0;
 }
+
 .book-link{
     font-weight: 700;
     text-decoration: none;
     color: #21897e;
 }
 
-h1{
-    color:red;
-}
-
+/* Set up image width in css */
 #heroimage, #aboutpage{
     width:100%;
 }
 
+/* Set up bookFrom style */
 #bookForm{
     width:50%;
     color:#21897e;
@@ -35,11 +35,13 @@ h1{
     border-radius: 2%;
 }
 
+/* Set up about_page style */
 #about_page{
   color:antiquewhite;
   background-color: #3ba99c;
 }
 
+/* Set up nav-item style */
 .nav-item{
     font-size: 1.3rem;
 }
@@ -49,10 +51,7 @@ h1{
     text-decoration: underline;
 }
 
-.nav-link.active {
-    color: red;
-}
-
+/* Set up unproved review style */
 .faded{
     color:rgb(171, 171, 171);
 }
